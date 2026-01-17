@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneSmile Club - Home</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
 
   <style>
@@ -17,7 +16,6 @@
       color: white;
     }
 
-    /* ---------------- HERO ---------------- */
     .main-content {
       height: 100vh;
       width: 100%;
@@ -47,7 +45,6 @@
       align-items: center;
     }
 
-    /* ---------------- LOGO & TEXT ---------------- */
     .logo {
       width: 120px;
       height: 120px;
@@ -65,11 +62,18 @@
       max-width: 700px;
     }
 
-    /* ---------------- BUTTON ---------------- */
+    /* ข้อความเล็กพิเศษ */
+    .subtitle {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      letter-spacing: 0.6px;
+      margin-top: 25px;
+    }
+
     .btn {
       display: inline-block;
       padding: 12px 30px;
-      margin-bottom: 50px;
+      margin: 6px;
       background: #696969;
       color: white;
       border-radius: 5px;
@@ -82,20 +86,12 @@
       background: #BEBEBE;
     }
 
-    /* ---------------- GANG ---------------- */
     .gang h3 {
-      margin-bottom: 12px;
+      margin: 30px 0 15px;
       font-size: 1.6rem;
       letter-spacing: 1px;
     }
 
-    .gang p {
-      margin: 0;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
-
-    /* ---------------- FADE IN EFFECT ---------------- */
     .fade {
       opacity: 0;
       transform: translateY(20px);
@@ -115,7 +111,6 @@
       }
     }
 
-    /* ---------------- RESPONSIVE ---------------- */
     @media (max-width: 768px) {
       .logo {
         width: 80px;
@@ -126,6 +121,9 @@
       }
       p {
         font-size: 1rem;
+      }
+      .subtitle {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -151,12 +149,16 @@
 
     <div class="gang fade delay-5">
       <h3>GANG & PARTNER</h3>
-    <a class="btn fade delay-4">Babydevil</a>
-    <a class="btn fade delay-4">Jujubae</a>
-    <a class="btn fade delay-4">Beside X Seth</a>
-    <a class="btn fade delay-4">Arxsy Media</a>
-    <a class="btn fade delay-4">OntheFlow</a>
-     <p>OneSmile Entertainment | What would I do without you?</p>
+
+      <a class="btn">Babydevil</a>
+      <a class="btn">Jujubae</a>
+      <a class="btn">Beside X Seth</a>
+      <a class="btn">Arxsy Media</a>
+      <a class="btn">OntheFlow</a>
+
+      <p class="subtitle">
+        OneSmile Entertainment | What would I do without you?
+      </p>
     </div>
 
   </div>
@@ -164,11 +166,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
