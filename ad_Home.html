@@ -17,13 +17,13 @@
             
             // ตรวจสอบว่าผู้ใช้ล็อกอินหรือยัง
             if (!localStorage.getItem("loggedIn")) {
-                window.location.href = "index.html";
+                window.location.href = "admin.html";
             }
         });
 
         function logout() {
             localStorage.removeItem("loggedIn");
-            window.location.href = "index.html";
+            window.location.href = "admin.html";
         }
     </script>
     <style>
@@ -111,6 +111,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
