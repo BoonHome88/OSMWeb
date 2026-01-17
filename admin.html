@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login : Armmm Management</title>
+    <link rel="icon" type="image/png" href="https://img2.pic.in.th/pic/passwordf8b74dd734c5e36c.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="auth.js"></script>
+    <style>
+        footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 10px; /* ปรับขนาดตัวหนังสือตามต้องการ */
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    overflow: hidden; /* ป้องกันการเลื่อน */
+}
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #56aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #22588e;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Armmm Management</h2>
+        <input type="text" id="username" placeholder="ชื่อผู้ใช้">
+        <input type="password" id="password" placeholder="รหัสผ่าน">
+        <button onclick="login()">เข้าสู่ระบบ</button>
+        <p id="message"></p>
+    </div>
+    
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var users = [
+                { username: "Armmm", password: "9182" },
+                { username: "Mradmin", password: "admin" },
+            ];
+
+            var userFound = false;
+            for (var i = 0; i < users.length; i++) {
+                if (users[i].username === username && users[i].password === password) {
+                    userFound = true;
+                    localStorage.setItem("loggedIn", "true");
+                    
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'เข้าสู่ระบบสำเร็จ!',
+                        text: 'ได้เวลาทำงานแล้วนะ ' + username,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = "ad_Home.html";
+                    });
+                    break;
+                }
+            }
+
+            if (!userFound) {
+                document.getElementById("message").innerText = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+            }
+        }
+    </script>
+<footer>
+    <p>&copy; 2025 Armmm WorkTool. All rights reserved.</p>
+</footer>
+</body>
+</html>
+
