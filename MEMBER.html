@@ -1,195 +1,190 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OneSmile Club - Member</title>
-<link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OneSmile Club - Member</title>
+  <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
 
-<style>
-  /* 🔹 Variables */
-  :root {
-    --bg-main: #000000;
-    --bg-card: #0f0f0f;
-    --bg-card-hover: #161616;
-    --text-main: #ffffff;
-    --text-sub: #9a9a9a;
-    --leader: #c9a14a;
-    --partner: #6fa8dc;
-    --hazard: #CC3333;
-    --member: #8f8f8f;
-    --btn: #3b4e59;
-    --btn-hover: #4c6573;
-  }
+  <style>
+    /* 🔹 Variables */
+    :root {
+      --bg-main: #000000;
+      --bg-card: #0f0f0f;
+      --bg-card-hover: #161616;
+      --text-main: #ffffff;
+      --text-sub: #9a9a9a;
+      --leader: #c9a14a;
+      --partner: #6fa8dc;
+	  --hazard: #CC3333;
+      --member: #8f8f8f;
+      --btn: #3b4e59;
+      --btn-hover: #4c6573;
+    }
 
-  /* 🔹 Global Styles */
-  * {
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
+    /* 🔹 Global Styles */
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    color: var(--text-main);
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #141414 0%, #000 65%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
 
-    /* 🔹 Background image + overlay */
-    background: 
-      rgba(0,0,0,0.6),
-      url('https://img2.pic.in.th/coolbackgrounds-particles-ether.png') no-repeat center center fixed;
-    background-size: cover;
-  }
+    header {
+      text-align: center;
+      padding: 28px 16px;
+      font-size: 20px;
+      letter-spacing: 3px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
 
-  header {
-    text-align: center;
-    padding: 28px 16px;
-    font-size: 20px;
-    letter-spacing: 3px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
+    .header-back {
+      color: var(--text-main);
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      display: inline-block;
+    }
 
-  .header-back {
-    color: var(--text-main);
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.25s ease;
-    display: inline-block;
-  }
+    .header-back:hover { opacity: 0.7; }
 
-  .header-back:hover { opacity: 0.7; }
+    /* 🔹 Container */
+    .container {
+      max-width: 480px;
+      margin: 40px auto;
+      background: rgba(15,15,15,0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+    }
 
-  /* 🔹 Container */
-  .container {
-    max-width: 480px;
-    margin: 40px auto;
-    background: rgba(15,15,15,0.85);
-    backdrop-filter: blur(8px);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9);
-  }
+    h1 {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 18px;
-    font-size: 22px;
-  }
+    .search-box {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #1f1f1f;
+      background: #050505;
+      color: #fff;
+      margin-bottom: 22px;
+    }
 
-  .search-box {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #1f1f1f;
-    background: #050505;
-    color: #fff;
-    margin-bottom: 22px;
-  }
+    /* 🔹 Member Card */
+    .member {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
 
-  /* 🔹 Member Card */
-  .member {
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    border-radius: 14px;
-    background: var(--bg-card);
-    margin-bottom: 12px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-  }
+    .member.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-  .member.show {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-  }
+    .member:hover { background: var(--bg-card-hover); }
 
-  .member:hover { background: var(--bg-card-hover); }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-  .left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #000;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #222;
+    }
 
-  .avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #000;
-    background-size: cover;
-    background-position: center;
-    border: 1px solid #222;
-  }
+    .name { font-weight: 600; }
+    .link { font-size: 12px; color: var(--text-sub); }
 
-  .name { font-weight: 600; }
-  .link { font-size: 12px; color: var(--text-sub); }
+    /* 🔹 Role badges */
+    .role {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-top: 4px;
+      display: inline-block;
+    }
 
-  /* 🔹 Role badges */
-  .role {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    margin-top: 4px;
-    display: inline-block;
-  }
+    .leader { background: rgba(201,161,74,0.15); color: var(--leader); }
+    .partner { background: rgba(111,168,220,0.15); color: var(--partner); }
+	.hazard { background: rgba(204, 51, 51,0.15); color: var(--hazard); }
+    .member-role { background: rgba(143,143,143,0.15); color: var(--member); }
 
-  .leader { background: rgba(201,161,74,0.15); color: var(--leader); }
-  .partner { background: rgba(111,168,220,0.15); color: var(--partner); }
-  .hazard { background: rgba(204, 51, 51,0.15); color: var(--hazard); }
-  .member-role { background: rgba(143,143,143,0.15); color: var(--member); }
+    .fb {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  .fb {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #111;
-    border: 1px solid #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    /* 🔹 Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
 
-  /* 🔹 Pagination */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 20px;
-  }
+    .pagination button {
+      background: #696969;
+      border: none;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
 
-  .pagination button {
-    background: #696969;
-    border: none;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-  }
+    .pagination button:hover:not(:disabled) { background: #BEBEBE; }
+    .pagination button:disabled { opacity: 0.4; cursor: default; }
+    .pagination button.active { font-weight: 600; }
 
-  .pagination button:hover:not(:disabled) { background: #BEBEBE; }
-  .pagination button:disabled { opacity: 0.4; cursor: default; }
-  .pagination button.active { font-weight: 600; }
+    /* 🔹 Footer */
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #6f6f6f;
+      padding: 30px 0 20px;
+    }
 
-  /* 🔹 Footer */
-  footer {
-    text-align: center;
-    font-size: 11px;
-    color: #6f6f6f;
-    padding: 30px 0 20px;
-  }
-
-  @media (max-width: 520px) {
-    .container { margin: 20px 14px; }
-  }
-</style>
+    @media (max-width: 520px) {
+      .container { margin: 20px 14px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -494,5 +489,3 @@
 
 </body>
 </html>
-
-
