@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneSmile Club - หน้าแรก</title>
+  <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #111;
+      color: white;
+    }
+
+    /* ---------------- HERO ---------------- */
+    .main-content {
+      height: 100vh;
+      width: 100%;
+      background-image: url('https://img2.pic.in.th/ghjkghjkjh-4.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: center; /* แนวนอนตรงกลาง */
+      align-items: center;     /* แนวตั้งตรงกลาง */
+      text-align: center;
+    }
+
+    /* overlay สีทึบ */
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+
+    /* กล่องข้อความ + โลโก้ */
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; /* เริ่มต้นซ่อนสำหรับ animation */
+      transform: scale(0.8);
+      animation: fadeScaleIn 1s forwards; /* เอฟเฟกต์ fade + scale */
+      animation-delay: 0.3s; /* หน่วงเวลาเล็กน้อย */
+    }
+
+    /* โลโก้ขนาดจริง */
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    /* ข้อความ */
+    h2 {
+      margin: 0 0 15px;
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin: 0 0 30px;
+      font-size: 1.2rem;
+      max-width: 700px;
+    }
+
+    /* ปุ่ม CTA */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      margin: 5px;
+      background: #696969;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #BEBEBE;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      padding: 20px;
+      text-align: center;   /* อยู่ตรงกลาง */
+      color: #aaa;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px){
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    /* ---------------- ANIMATION ---------------- */
+    @keyframes fadeScaleIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="main-content">
+  <div class="content">
+    <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png" alt="OSM Logo" class="logo">
+    <h2>OneSmile Club</h2>
+    <p>OSM | HAPPINESS IS SEEING YOUR FAMILY HAPPY.</p>
+	<a href="MEMBER.html" class="btn">MEMBER ONESMILE</a>
+  </div>
+</section>
+</body>
+</html>
