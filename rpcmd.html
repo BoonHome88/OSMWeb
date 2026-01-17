@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำสั่ง ROLEPLAY</title>
+	<link rel="icon" type="image/png" href="https://img2.pic.in.th/pic/imaged781f12441417001.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="auth.js"></script>
+<script>
+    function transitionToPage(url) {
+        gsap.to("body", { opacity: 0, filter: "blur(5px)", duration: 0.1, onComplete: () => window.location.href = url });
+    }
+
+    // ทำให้หน้า Fade-in + Unblur เมื่อโหลด
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.from("body", { opacity: 0, filter: "blur(5px)", duration: 0.1 });
+    });
+</script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 700px;
+            width: 90%;
+            margin: 0 auto 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .text-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        p {
+            background: #DCDCDC;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            flex: 1;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+        .next-btn {
+            display: block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin: 20px auto;
+            width: fit-content;
+        }
+        .next-btn:hover {
+            background-color: #0056b3;
+        }
+	.swal2-confirm {
+            background-color: #28a745 !important; /* สีเขียว */
+            color: white !important;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>คำสั่ง ROLEPLAY</h1>
+<a href="#" class="next-btn" onclick="transitionToPage('subrp.html')">ย้อนกลับ</a>	
+        <div class="text">
+            <div class="text-wrapper">
+			<p>เลขไอดีดิสคอส (ต่อไวลิส)</p>
+                <p id="text1">wlunhold</p>
+                <button class="copy-btn" onclick="copyText('text1')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+			<p>เลขไอดีดิสคอส พ้อย (แอดพ้อย)</p>
+                <p id="text2">wladdpoints</p>
+                <button class="copy-btn" onclick="copyText('text2')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+			<p>ปลดแบนผู้เล่น</p>
+                <p id="text3">def.unban steam:</p>
+                <button class="copy-btn" onclick="copyText('text3')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+			<p>แบนผู้เล่น</p>
+                <p id="text33">def.ban steam:</p>
+                <button class="copy-btn" onclick="copyText('text33')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+			<p>ขึ้นฟ้า</p>
+                <p id="text34">375.7950, -972.3331, 2497.6406, 318.7451</p>
+                <button class="copy-btn" onclick="copyText('text34')">คัดลอก</button>
+            </div>
+      <div class="text-wrapper">
+			<p>ID ชุบชีวิต</p>
+                <p id="text4">/h</p>
+                <button class="copy-btn" onclick="copyText('text4')">คัดลอก</button>
+            </div>
+	      <div class="text-wrapper">
+			<p>ID ชุบ + เกราะ</p>
+                <p id="text5">/ha</p>
+                <button class="copy-btn" onclick="copyText('text5')">คัดลอก</button>
+            </div>		
+	      <div class="text-wrapper">
+			<p>กิ๊ฟของ id ชื่อitem จำนวน</p>
+                <p id="text6">/giveitem id ชื่อitem จำนวน</p>
+                <button class="copy-btn" onclick="copyText('text6')">คัดลอก</button>
+            </div>			
+	      <div class="text-wrapper">
+			<p>ลบของ id ชื่อitem จำนวน</p>
+                <p id="text7">/delitem id ชื่อitem จำนวน</p>
+                <button class="copy-btn" onclick="copyText('text7')">คัดลอก</button>
+            </div>			
+			<div class="text-wrapper">
+			<p>เช็คเวลาคลูดาวน์ออกแก๊ง</p>
+                <p id="text8">/checkcooldown</p>
+                <button class="copy-btn" onclick="copyText('text8')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+			<p>ลบรถคันที่นั่งอยู ใส่ตัวเลขจะลบรถในระยะ</p>
+                <p id="text9">/dv</p>
+                <button class="copy-btn" onclick="copyText('text9')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+			<p>เสก ใส่ชื่อโมเดลรถ</p>
+                <p id="text10">/car</p>
+                <button class="copy-btn" onclick="copyText('text10')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ตั้งอาชีพ id ชื่อหน่วยงาน grade : council 0-1 / police 0-4 / ambulance 0-4 / unemployed 0</p>
+                <p id="text11">/setjob</p>
+                <button class="copy-btn" onclick="copyText('text11')">คัดลอก</button>
+            </div>			
+			<div class="text-wrapper">
+			<p>ให้เงินเขียว</p>
+                <p id="text12">/giveaccountmoney ID money จำนวน</p>
+                <button class="copy-btn" onclick="copyText('text12')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+			<p>ให้เงินแดง</p>
+                <p id="text13">/giveaccountmoney ID black_money จำนวน</p>
+                <button class="copy-btn" onclick="copyText('text13')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+			<p>คำสั่งลบพรอบ</p>
+                <p id="text14">/dev.delprop</p>
+                <button class="copy-btn" onclick="copyText('text14')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ ฮิล ส่งตัว ไป การาจ</p>
+                <p id="text15">/dev.gr id</p>
+                <button class="copy-btn" onclick="copyText('text15')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ ฮิล ส่งตัว ไป รพ</p>
+                <p id="text16">/dev.ht id</p>
+                <button class="copy-btn" onclick="copyText('text16')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ ฮิล ส่งตัว ไป สภา</p>
+                <p id="text17">/dev.gr2 id</p>
+                <button class="copy-btn" onclick="copyText('text17')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ ฮิล ส่งตัว ไป แลนด์ดำ</p>
+                <p id="text18">/dev.gr3 id</p>
+                <button class="copy-btn" onclick="copyText('text18')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ ฮิล ส่งตัว ไป พาวทะเลทราย</p>
+                <p id="text19">/dev.gr4 id</p>
+                <button class="copy-btn" onclick="copyText('text19')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ชุบ โซนระยะนั้น</p>
+                <p id="text20">/dev.revive_zone ระยะ</p>
+                <button class="copy-btn" onclick="copyText('text20')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>รีข้าวออโต้(ต้องมี admin_card)</p>
+                <p id="text21">/dev.hh</p>
+                <button class="copy-btn" onclick="copyText('text21')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ตั้งเวลาลบรถ</p>
+                <p id="text22">/delallcar เวลา</p>
+                <button class="copy-btn" onclick="copyText('text22')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ยกเลิกเวลาลบรถ</p>
+                <p id="text23">/ccdelallcar</p>
+                <button class="copy-btn" onclick="copyText('text23')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ตั้งเวลารีเซิฟ</p>
+                <p id="text24">/rsnoti เวลา</p>
+                <button class="copy-btn" onclick="copyText('text24')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>ยกเลิกเวลารีเซิฟ</p>
+                <p id="text25">/ccrsnoti</p>
+                <button class="copy-btn" onclick="copyText('text25')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>เปิดให้เข้าเกมมาแล้วจะไม่ตาย</p>
+                <p id="text26">/dev.nodie</p>
+                <button class="copy-btn" onclick="copyText('text26')">คัดลอก</button>
+            </div>
+			<div class="text-wrapper">
+			<p>เปิดให้เข้าเกมมาแล้วจะตายตามปกติ</p>
+                <p id="text27">/dev.die</p>
+                <button class="copy-btn" onclick="copyText('text27')">คัดลอก</button>
+            </div>
+					<div class="text-wrapper">
+			<p>เปิดการใช้งานคำสั่ง gohome</p>
+                <p id="text28">/starthelp</p>
+                <button class="copy-btn" onclick="copyText('text28')">คัดลอก</button>
+            </div>
+					<div class="text-wrapper">
+			<p>ปิดการใช้งานคำสั่ง gohome</p>
+                <p id="text29">/stophelp</p>
+                <button class="copy-btn" onclick="copyText('text29')">คัดลอก</button>
+            </div>
+<script>
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            Swal.fire({
+                title: "คัดลอกสำเร็จ!",
+                text: `"${text}"`,
+                icon: "success",
+                showConfirmButton: false, // ซ่อนปุ่มตกลง
+                timer: 1000 // ปิดอัตโนมัติหลัง 1.5 วินาที
+            });
+        }).catch(err => {
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "ไม่สามารถคัดลอกข้อความได้",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            console.error("เกิดข้อผิดพลาดในการคัดลอก: ", err);
+        });
+    }
+</script>
+
+</body>
+</html>

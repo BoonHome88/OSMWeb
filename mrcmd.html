@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำสั่ง Midnight</title>	
+	<link rel="icon" type="image/png" href="https://img5.pic.in.th/file/secure-sv1/Asset_7.png">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="auth.js"></script>
+<script>
+    function transitionToPage(url) {
+        gsap.to("body", { opacity: 0, filter: "blur(5px)", duration: 0.1, onComplete: () => window.location.href = url });
+    }
+
+    // ทำให้หน้า Fade-in + Unblur เมื่อโหลด
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.from("body", { opacity: 0, filter: "blur(5px)", duration: 0.1 });
+    });
+</script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 700px;
+            width: 90%;
+            margin: 0 auto 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .text-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        p {
+            background: #DCDCDC;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            flex: 1;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+        .next-btn {
+            display: block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin: 20px auto;
+            width: fit-content;
+        }
+        .next-btn:hover {
+            background-color: #0056b3;
+        }
+	.swal2-confirm {
+            background-color: #28a745 !important; /* สีเขียว */
+            color: white !important;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>คำสั่ง Midnight</h1>
+<a href="#" class="next-btn" onclick="transitionToPage('submr.html')">ย้อนกลับ</a>		
+        <div class="text">
+            <div class="text-wrapper">
+                <p id="text1">def.unban steam:</p>
+                <button class="copy-btn" onclick="copyText('text1')">คัดลอก</button>
+            </div>
+ 		 <div class="text-wrapper">
+                <p id="text111">def.ban steam:</p>
+                <button class="copy-btn" onclick="copyText('text111')">คัดลอก</button>
+            </div>
+		<div class="text-wrapper">
+			<p>ขึ้นฟ้า</p>
+                <p id="text34">375.7950, -972.3331, 2471.1062, 298.0782</p>
+                <button class="copy-btn" onclick="copyText('text34')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+                <p id="text2">p+ unban steam: force</p>
+                <button class="copy-btn" onclick="copyText('text2')">คัดลอก</button>
+            </div>
+            <div class="text-wrapper">
+                <p id="text3">osp คำสั่งเมื่อตัวไม่โหลด</p>
+                <button class="copy-btn" onclick="copyText('text3')">คัดลอก</button>
+            </div>
+      <div class="text-wrapper">
+                <p id="text4">wlunhold เลขไอดีดิสคอส (ต่อไวลิส)</p>
+                <button class="copy-btn" onclick="copyText('text4')">คัดลอก</button>
+            </div>
+	      <div class="text-wrapper">
+                <p id="text5">systemreward id add xxxx</p>
+                <button class="copy-btn" onclick="copyText('text5')">คัดลอก</button>
+            </div>		
+	      <div class="text-wrapper">
+                <p id="text6">systempoint id add XXXX</p>
+                <button class="copy-btn" onclick="copyText('text6')">คัดลอก</button>
+            </div>			
+	      <div class="text-wrapper">
+                <p id="text7">เรียบร้อยครับ
+    <br>กด E เพื่อเปิดเมาส์ในวงแต่งตัวครับ
+    <br>กดที่รีสกินเพื่อแต่งตัว เสร็จแล้วกดที่เข้าเมืองนะครับ</p>
+                <button class="copy-btn" onclick="copyText('text7')">คัดลอก</button>
+            </div>			
+			<div class="text-wrapper">
+                <p id="text8">แอดคอยสะสมแล้วครับ
+    <br>ทุกการโดเนทจะมี Coin สะสมให้นะครับ สามารถดู Coin ได้ที่ F1 แอพ MRP SHOP จะมีของให้แลกด้วยครับ
+    <br>เรียบร้อย :white_check_mark: เบิกรถได้เลยครับผม</p>
+                <button class="copy-btn" onclick="copyText('text8')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+                <p id="text9">ช่วงเวลา 00.00 - 02.00 แอพ MRP SHOP จะทำการปิดชั่วคราว เพื่อป้องกันเรื่องยอดไม่เข้าระหว่างธนาคารอัพเดท ขออภัยในความไม่สะดวกล่วงหน้าด้วยนะครับ</p>
+                <button class="copy-btn" onclick="copyText('text9')">คัดลอก</button>
+            </div>	
+			<div class="text-wrapper">
+                <p id="text10">dev.redeem</p>
+                <button class="copy-btn" onclick="copyText('text10')">คัดลอก</button>
+            </div>		
+			<div class="text-wrapper">
+                <p id="text11">dev.checkcode</p>
+                <button class="copy-btn" onclick="copyText('text11')">คัดลอก</button>
+            </div>
+		<div class="text-wrapper">
+                <p id="text12">/bountyx ไอดี วินาที ราคาหัว</p>
+                <button class="copy-btn" onclick="copyText('text12')">คัดลอก</button>
+            </div>
+		<div class="text-wrapper">
+                <p id="text13">/storev ทะเบียนรถ main</p>
+                <button class="copy-btn" onclick="copyText('text13')">คัดลอก</button>
+            </div>
+
+<p>----------------------------------</p>
+    <p>dev.openregister robbank  เปิดปล้นธนาคารทีม</p>
+    <p>dev.openregister robbanksm  เปิดปล้นธนาคารปชช</p>
+    <p>dev.openregister robstore  เปิดปล้นร้าน</p>
+    <p>-------------------------------------</p>
+    <p>dev.closeregister robbank ปิดปล้นธนาคารทีม</p>
+    <p>dev.closeregisterrobbanksm ปิดปล้นธนาคารปชช</p>
+    <p>dev.closeregister robstore ปิดปล้นร้าน</p>
+    <p>------------------------------------</p>
+    <p>dev.clearstatus id</p>
+    <p>มิติ id มิติที่ต้องการ            -- 0 คือมิติหลัก /มิติ id 0</p>
+    <p>dev.startss</p>
+    <p>dev.stopss</p>
+    <p>สอนใช้งาน Trailer https://youtu.be/PY2Sk-O7L1s</p>
+    <p>เลขทรูมันนี่วอเลต : 0881188799</p>
+    <p>def.bypass_globalban &lt;identifier, hwid&gt; &lt;ban_id&gt; | bypass globalban</p>
+	</div>
+</body>
+</html>
+    </div>
+<script>
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            Swal.fire({
+                title: "คัดลอกสำเร็จ!",
+                text: `"${text}"`,
+                icon: "success",
+                showConfirmButton: false, // ซ่อนปุ่มตกลง
+                timer: 1000 // ปิดอัตโนมัติหลัง 1.5 วินาที
+            });
+        }).catch(err => {
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "ไม่สามารถคัดลอกข้อความได้",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            console.error("เกิดข้อผิดพลาดในการคัดลอก: ", err);
+        });
+    }
+</script>
+</body>
+</html>

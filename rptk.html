@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อความไว้ตอบ Ticket</title>
+    <link rel="icon" type="image/png" href="https://img2.pic.in.th/pic/imaged781f12441417001.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="auth.js"></script>
+<script>
+    function transitionToPage(url) {
+        gsap.to("body", { opacity: 0, filter: "blur(5px)", duration: 0.1, onComplete: () => window.location.href = url });
+    }
+
+    // ทำให้หน้า Fade-in + Unblur เมื่อโหลด
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.from("body", { opacity: 0, filter: "blur(5px)", duration: 0.1 });
+    });
+</script>
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 700px;
+            width: 90%;
+            margin: 0 auto 20px auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .text-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        p {
+            background: #DCDCDC;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            flex: 1;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+        .next-btn {
+            display: block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin: 20px auto;
+            width: fit-content;
+        }
+        .next-btn:hover {
+            background-color: #0056b3;
+        }
+        .swal2-confirm {
+            background-color: #28a745 !important; /* สีเขียว */
+            color: white !important;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ข้อความไว้ตอบ Ticket</h1>
+<a href="#" class="next-btn" onclick="transitionToPage('subhug.html')">ย้อนกลับ</a>	
+        <div class="text">
+<div class="text-wrapper">
+<p id="text1">:white_check_mark: ต่อไวลิสให้เรียบร้อยครับ เข้าเกมได้เลย</p>
+<button class="copy-btn" onclick="copyText('text1')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text2">เบื้องต้นน้องแอดมินได้ทำการส่งเรื่องไปให้เดฟจัดการแก้ไขแล้วคั้บ ทางทีมงานจะจัดการแก้เรื่องนี้ให้เร็วที่สุดนะคั้บ</p>
+<button class="copy-btn" onclick="copyText('text2')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text3">ตอนนี้เว็บกำลังมีปัญหาอยู่คั้บพี่ผู้เล่น น้องแอดมินแจ้งพี่เดฟไปแล้ว เดี๋ยวจะรีบแก้ไขนะคั้บผมม</p>
+<button class="copy-btn" onclick="copyText('text3')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text4">ระบบเติมเงินใช้งานได้ตามปกติแล้วคั้บผม</p>
+<button class="copy-btn" onclick="copyText('text4')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text5">เรื่องเสื้อผ้าแก๊งติด่ต่อกับทางสภาได้เลยคั้บ</p>
+<button class="copy-btn" onclick="copyText('text5')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text6">น้องแอดมินขอเรียนให้ทราบตามนี้เลยนะคั้บว่าด้วยข้อมูลที่พี่ผู้เล่นส่งเข้ามาไม่สามารถระบุตัวคนทำได้อย่างชัดเจน หากมีเรื่องราวแบบนี้เกิดขึ้นอีก พี่ผู้เล่นเก็บข้อมูลที่เกี่ยวกับตัวคนทำให้ได้มากที่สุดเลยนะคั้บ</p>
+<button class="copy-btn" onclick="copyText('text6')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text7">ขอเลข steamhex ด้วยหน่อยคั้บ</p>
+<button class="copy-btn" onclick="copyText('text7')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text8">ลบแคชในหอยทากสีเขียวให้หน่อยคั้บ สามโฟเดอร์นี้เลย แล้วลองเข้าใหม่ว่าหายมั้ยคั้บ</p>
+<button class="copy-btn" onclick="copyText('text8')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text9">เรียบร้อยคั้บผม เช็คเครดิตในเว็บได้เลย</p>
+<button class="copy-btn" onclick="copyText('text9')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text10">แอดมินจำเป็นต้องการหลักฐานเป็นคลิปเพื่อนำไปแสดงโทษหรือให้เขาดูเพื่อรับทราบถึงข้อกล่าวหาคั้บ</p>
+<button class="copy-btn" onclick="copyText('text10')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text11">stopragdoll กดใน F8 ห้ามให้เห็นจอนะ</p>
+<button class="copy-btn" onclick="copyText('text11')">คัดลอก</button>
+</div>
+<div class="text-wrapper">
+<p id="text12">แบบฟอร์มการซื้อขายสกินอาวุธ
+    <br>ชื่อไอเท็มสกิน :
+    <br>ราคาที่เสนอขาย (ไม่รวมค่าผ่านกลาง) :
+    <br>steamhex ผู้ซื้อ :
+    <br>ชื่อ IC ผู้ซื้อ :
+    <br>steamhex ผู้ขาย :
+    <br>ชื่อ IC ผู้ขาย :
+	<br>* แนบสลิปค่าผ่านกลาง (โอนเข้าบัญชีเมือง) และ สลิปค่าซื้อขายสกินด้วยนะครับ (โอนเข้าบัญชีผู้ขาย)
+	<br># 🔔  โอนแยกกัน 2 สลิปนะครับ 🔔</p>
+<button class="copy-btn" onclick="copyText('text12')">คัดลอก</button>
+</div>
+<script>
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            Swal.fire({
+                title: "คัดลอกสำเร็จ!",
+                text: `"${text}"`,
+                icon: "success",
+                showConfirmButton: false, // ซ่อนปุ่มตกลง
+                timer: 1000 // ปิดอัตโนมัติหลัง 1.5 วินาที
+            });
+        }).catch(err => {
+            Swal.fire({
+                title: "เกิดข้อผิดพลาด!",
+                text: "ไม่สามารถคัดลอกข้อความได้",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            console.error("เกิดข้อผิดพลาดในการคัดลอก: ", err);
+        });
+    }
+</script>
+</body>
+</html>

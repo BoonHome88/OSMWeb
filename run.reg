@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\HUGitems]
+@="URL:BatLauncher Protocol"
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\HUGitems\shell]
+
+[HKEY_CLASSES_ROOT\HUGitems\shell\open]
+
+[HKEY_CLASSES_ROOT\HUGitems\shell\open\command]
+@="D:\\Armmm WorkTool\\HUGitems.bat"
