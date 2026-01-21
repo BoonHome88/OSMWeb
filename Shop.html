@@ -1,287 +1,209 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OneSmile Club - Shop</title>
-<link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneSmile Club</title>
 
-<style>
-:root{
-  --bg-main:#060606;
-  --bg-card:#0f0f0f;
-  --bg-soft:#141414;
-  --accent:#deca73;
-  --accent-soft:#ffd84d;
-  --text:#f2f2f2;
-  --muted:#b5b5b5;
-  --border:#1f1f1f;
-}
+  <meta property="og:title" content="OneSmile Club">
+  <meta property="og:description" content="OneSmile Club | Member list & Partner&#10;OneSmile Entertainment | Video & Music" />
+  <meta property="og:image" content="https://img5.pic.in.th/file/secure-sv1/rtyrtytryt6e01016a330a6bfa.th.png">
+  <meta property="og:type" content="website">
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Inter,Arial,sans-serif;
-}
+  <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
 
-body{
-  background:#060606;
-  color:var(--text);
-  overflow-x:hidden;
-}
+  <style>
+    /* ---------------- BODY & BACKGROUND ---------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
 
-/* ====== GLOBAL ANIMATION ====== */
-.fade-up{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .8s ease, transform .8s ease;
-}
+      /* ใส่ภาพพื้นหลังเต็มหน้า */
+      background: url('https://img2.pic.in.th/matt-gross-9aCkSl6YcXg-unsplash.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
 
-.fade-up.show{
-  opacity:1;
-  transform:translateY(0);
-}
+    /* ---------------- HERO ---------------- */
+    .main-content {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
 
-/* ---------- HERO ---------- */
-.hero{
-  text-align:center;
-  padding:80px 20px 40px;
-}
+    /* Overlay ดำโปร่ง */
+    .main-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
 
-.hero-logo {
-  max-width:500px; /* ปรับขนาดโลโก้ */
-  width:100%;
-  height:auto;
-  margin-bottom:10px;
-  animation:heroGlow 2.5s ease-in-out infinite alternate; /* effect แบบ h1 */
-}
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
 
-@keyframes heroGlow{
-  from{ text-shadow:0 0 0 rgba(222, 202, 115,.2); filter: drop-shadow(0 0 0 rgba(222, 202, 115,.2)); }
-  to{ text-shadow:0 0 18px rgba(222, 202, 115,.55); filter: drop-shadow(0 0 18px rgba(222, 202, 115,.55)); }
-}
+    /* ---------------- LOGO & TEXT ---------------- */
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
 
-.hero p{
-  color:var(--muted);
-  margin-bottom:30px;
-}
+    h2 {
+      margin: 0 0 15px;
+      font-size: 2.5rem;
+    }
 
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  margin-bottom:40px;
-}
+    p {
+      margin: 0 0 25px;
+      font-size: 1.2rem;
+      max-width: 700px;
+    }
 
-.stat{
-  background:linear-gradient(180deg,#121212,#060606);
-  border:1px solid rgba(247,200,0,.25);
-  padding:20px 28px;
-  border-radius:14px;
-  min-width:110px;
-  transition:.4s;
-}
+    /* ---------------- BUTTON ---------------- */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
 
-.stat:hover{
-  transform:translateY(-6px) scale(1.03);
-  box-shadow:0 12px 30px rgba(247,200,0,.2);
-}
+    .btn {
+      padding: 12px 30px;
+      background: #696969;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      white-space: nowrap;
+    }
 
-.stat h2{
-  color:var(--accent);
-  font-size:1.8rem;
-}
+    .btn:hover {
+      background: #BEBEBE;
+    }
 
-.stat span{
-  font-size:.85rem;
-  color:var(--muted);
-}
+    .btns {
+      display: inline-block;
+      padding: 12px 30px;
+      margin: 6px;
+      background: #212121;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-/* ---------- SEARCH ---------- */
-.search-box{
-  max-width:900px;
-  margin:0 auto 50px;
-  padding:25px;
-  background:linear-gradient(180deg,#121212,#060606);
-  border-radius:20px;
-  display:flex;
-  gap:15px;
-}
+    .btns:hover {
+      background: #424242;
+    }
 
-.search-box input{
-  flex:1;
-  background:#060606;
-  border:1px solid rgba(247,200,0,.25);
-  color:white;
-  padding:14px 18px;
-  border-radius:12px;
-  outline:none;
-}
+    /* ---------------- GANG ---------------- */
+    .gang h3 {
+      margin: 30px 0 15px;
+      font-size: 1.6rem;
+    }
 
-.search-box input:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 2px rgba(247,200,0,.15);
-}
+    /* ---------------- FADE ---------------- */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
 
-.search-box button{
-  background:var(--accent);
-  border:none;
-  padding:0 28px;
-  color:#060606;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.3s;
-}
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+    .delay-5 { animation-delay: 1s; }
+    .delay-6 { animation-delay: 1.2s; }
 
-.search-box button:hover{
-  background:var(--accent-soft);
-  transform:translateY(-2px);
-}
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-/* ---------- PRODUCTS ---------- */
-.products{
-  max-width:1200px;
-  margin:auto;
-  padding:0 20px 80px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
+    /* ---------------- SUBTITLE ---------------- */
+    .subtitle {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      margin-top: 30px;
+    }
 
-.card{
-  background:linear-gradient(180deg,#121212,#060606);
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid rgba(247,200,0,.18);
-  transition:.4s;
-}
+    .subtitle-link {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 25px 50px rgba(247,200,0,.2);
-}
+    .subtitle-link:hover {
+      text-decoration: underline;
+    }
 
-.card img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  transition:transform .5s ease;
-}
-
-.card:hover img{
-  transform:scale(1.08);
-}
-
-.card-body{
-  padding:18px;
-}
-
-.card h3{
-  font-size:1.05rem;
-  margin-bottom:10px;
-}
-
-.stock{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-size:.8rem;
-  color:var(--muted);
-  margin-bottom:15px;
-}
-
-.price{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.price span{
-  font-size:1.2rem;
-  color:var(--accent);
-  font-weight:700;
-}
-
-.buy{
-  background:#060606;
-  border:1px solid rgba(247,200,0,.4);
-  color:var(--accent);
-  padding:8px 16px;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:600;
-  transition:.3s;
-}
-
-.buy:hover{
-  background:var(--accent);
-  color:#060606;
-  transform:scale(1.05);
-}
-
-/* ---------- FOOTER ---------- */
-footer{
-  text-align:center;
-  padding:25px;
-  color:#9a9a9a;
-  background:#060606;
-  border-top:1px solid rgba(247,200,0,.15);
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:768px){
-  .hero-logo{max-width:180px;}
-  .stats{flex-wrap:wrap}
-}
-</style>
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 768px) {
+      h2 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .logo { width: 80px; height: 80px; }
+    }
+  </style>
 </head>
 <body>
 
-<section class="hero fade-up">
-  <!-- โลโก้เป็นลิงก์ -->
-<a href="Home.html">
-  <img src="https://img5.pic.in.th/file/secure-sv1/Group-2-copya326c8b37db7febf.png" alt="ONESMILE SHOP" class="hero-logo">
-</a>
-  
-  <p>จำหน่ายสินค้าต่างๆจากเรา OneSmile Club พร้อมรับประกันสุดสายตา</p>
+<section class="main-content">
+  <div class="content">
 
-  <div class="stats">
-    <div class="stat fade-up"><h2>1</h2><span>หมวดหมู่</span></div>
-    <div class="stat fade-up"><h2>4</h2><span>สินค้า</span></div>
-    <div class="stat fade-up"><h2>24/7</h2><span>บริการ</span></div>
-  </div>
+    <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png"
+         class="logo fade delay-1">
 
-  <div class="search-box fade-up">
-    <input type="text" placeholder="ค้นหาสินค้าที่คุณต้องการ...">
-    <button>ค้นหา</button>
+    <h2 class="fade delay-2">OneSmile Club</h2>
+
+    <p class="fade delay-3">
+      OSM | HAPPINESS IS SEEING YOUR FAMILY HAPPY.
+    </p>
+
+    <!-- ปุ่มอยู่บรรทัดเดียวกัน -->
+    <div class="btn-group fade delay-4">
+      <a href="MEMBER.html" class="btn">MEMBER OF ONESMILE</a>
+      <a href="Shop.html" class="btn">SHOP</a>
+    </div>
+
+    <div class="gang fade delay-5">
+      <h3>GANG & PARTNER</h3>
+
+      <a class="btns">Babydevil</a>
+      <a class="btns">Jujubae</a>
+      <a class="btns">Beside X Seth</a>
+      <a class="btns" href="https://discord.gg/midnightracing" target="_blank">MR Original</a>
+      <a class="btns" href="https://discord.gg/AQ6V56FSzFw" target="_blank">OntheFlow</a>
+
+      <p class="subtitle fade delay-6">
+        <a href="https://www.facebook.com/OneSmile168"
+           target="_blank"
+           class="subtitle-link">
+          OneSmile Entertainment
+        </a>
+        | What would I do without you?
+      </p>
+    </div>
+
   </div>
 </section>
-
-<section class="products">
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/dsfd00x300.jpg"><div class="card-body"><h3>พระเครื่อง : สมเด็จเปี๊ยก</h3><div class="stock">🟢 คงเหลือ 4 ชิ้น</div><div class="price"><span>฿199.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/www330626df8bd13455.png"><div class="card-body"><h3>สติ๊กเกอร์ : OSM V.2</h3><div class="stock">🟢 คงเหลือ 1 ชิ้น</div><div class="price"><span>฿200.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/image8e67d5f83eca18a5.png"><div class="card-body"><h3>วิธีรับมือกับหม่องวิน (ฉบับเต็ม)</h3><div class="stock">🔴 หมด</div><div class="price"><span>฿170.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/image9d35bd4138cdb687.png"><div class="card-body"><h3>คู่มือการวางมาดสไตล์บุญโฮม</h3><div class="stock">🔴 หมด</div><div class="price"><span>฿150.00</span><button class="buy">ซื้อ</button></div></div></div>
-</section>
-
-<footer class="fade-up">
-OneSmile Entertainment | Powered by BoonHome © 2026
-</footer>
-
-<script>
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{ threshold:0.15 });
-
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
-</script>
 
 </body>
 </html>
-
