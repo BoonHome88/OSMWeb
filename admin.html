@@ -28,7 +28,7 @@ body {
 }
 h2 { margin-bottom: 20px; }
 input {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -48,22 +48,58 @@ button {
     transition: 0.3s;
 }
 button:hover { background: #22588e; }
-#captcha {
-    font-weight: bold; 
-    letter-spacing: 3px; 
-    font-size: 18px; 
-    margin: 10px 0 5px 0;
+
+/* CAPTCHA container */
+.captcha-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
 }
-#refreshCaptcha {
+
+.captcha-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 10px;
-    background: #eee;
-    color: #333;
-    font-size: 14px;
 }
-#refreshCaptcha:hover {
-    background: #ddd;
-    transform: scale(1.05);
+
+#captcha {
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 18px;
+    background-color: white;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
 }
+
+/* แถว input CAPTCHA */
+.captcha-input-row {
+    display: flex;
+    align-items: center;
+}
+
+#captchaInput {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#verified {
+    color: green;
+    font-weight: bold;
+    margin-left: 10px;
+    display: none;
+}
+
 #message { 
     color: red; 
     margin-top: 10px; 
@@ -89,9 +125,15 @@ footer {
     <input type="password" id="password" placeholder="รหัสผ่าน">
 
     <!-- CAPTCHA -->
-    <div id="captcha"></div>
-    <button type="button" id="refreshCaptcha" onclick="generateCaptcha()">🔄 CAPTCHA ใหม่</button>
-    <input type="text" id="captchaInput" placeholder="กรอก CAPTCHA">
+    <div class="captcha-container">
+        <div class="captcha-row">
+            <div id="captcha"></div>
+        </div>
+        <div class="captcha-input-row">
+            <input type="text" id="captchaInput" placeholder="กรอก CAPTCHA" oninput="checkCaptcha()">
+            <span id="verified">✓ Verified</span>
+        </div>
+    </div>
 
     <button onclick="login()">เข้าสู่ระบบ</button>
     <p id="message"></p>
@@ -100,7 +142,7 @@ footer {
 <script>
 let currentCaptcha = "";
 
-// ฟังก์ชันสุ่ม CAPTCHA ตัวเลข+ตัวอักษร 4 ตัว
+// สุ่ม CAPTCHA ตัวเลข+ตัวอักษร 6 ตัว
 function generateCaptcha() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     currentCaptcha = "";
@@ -108,12 +150,24 @@ function generateCaptcha() {
         currentCaptcha += chars.charAt(Math.floor(Math.random()*chars.length));
     }
     document.getElementById("captcha").innerText = currentCaptcha;
+    document.getElementById("captchaInput").value = "";
+    document.getElementById("verified").style.display = "none";
 }
 
 // เรียก CAPTCHA ตอนโหลดหน้า
 generateCaptcha();
 
-// แสดงข้อความ error หายอัตโนมัติ
+// ตรวจ input กับ CAPTCHA แสดง ✓ Verified
+function checkCaptcha() {
+    const input = document.getElementById("captchaInput").value.toUpperCase();
+    if(input === currentCaptcha) {
+        document.getElementById("verified").style.display = "inline";
+    } else {
+        document.getElementById("verified").style.display = "none";
+    }
+}
+
+// ข้อความ error หายอัตโนมัติ
 function showMessage(msg) {
     const messageEl = document.getElementById("message");
     messageEl.innerText = msg;
@@ -121,45 +175,37 @@ function showMessage(msg) {
 }
 
 function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var captchaInput = document.getElementById("captchaInput").value.toUpperCase();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const captchaInput = document.getElementById("captchaInput").value.toUpperCase();
 
-    // ตรวจ CAPTCHA ก่อน
-    if (captchaInput !== currentCaptcha) {
+    if(captchaInput !== currentCaptcha) {
         showMessage("CAPTCHA ไม่ถูกต้อง!");
-        generateCaptcha(); // สุ่มใหม่ทุกครั้ง
+        generateCaptcha(); // สุ่มใหม่อัตโนมัติ
         return;
     }
 
-    // ตรวจ username/password
-    var users = [
+    const users = [
         { username: "Armmm", password: "9182" },
         { username: "Mradmin", password: "admin" },
     ];
 
-    var userFound = false;
-    for (var i = 0; i < users.length; i++) {
-        if (users[i].username === username && users[i].password === password) {
-            userFound = true;
-            localStorage.setItem("loggedIn", "true");
+    let userFound = users.some(u => u.username === username && u.password === password);
 
-            Swal.fire({
-                icon: 'success',
-                title: 'เข้าสู่ระบบสำเร็จ!',
-                text: 'ได้เวลาทำงานแล้วนะ ' + username,
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                window.location.href = "ad_Home.html";
-            });
-            break;
-        }
-    }
-
-    if (!userFound) {
+    if(userFound){
+        localStorage.setItem("loggedIn", "true");
+        Swal.fire({
+            icon: 'success',
+            title: 'เข้าสู่ระบบสำเร็จ!',
+            text: 'ได้เวลาทำงานแล้วนะ ' + username,
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            window.location.href = "ad_Home.html";
+        });
+    } else {
         showMessage("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
-        generateCaptcha(); // สุ่ม CAPTCHA ใหม่ด้วย
+        generateCaptcha(); // สุ่มใหม่อัตโนมัติ
     }
 }
 </script>
