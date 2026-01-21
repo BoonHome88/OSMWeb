@@ -5,62 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login : Armmm Management</title>
 <link rel="icon" type="image/png" href="https://img2.pic.in.th/pic/passwordf8b74dd734c5e36c.png">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #060606);
+    background-color: #060606;
     margin: 0;
 }
 .login-container {
     background: #0d0d0d;
-    padding: 40px 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    width: 350px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #fff;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 h2 { 
-    margin-bottom: 25px; 
+    margin-bottom: 20px; 
     color: #f7c800;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 input {
     width: calc(100% - 20px);
-    padding: 12px;
+    padding: 10px;
     margin: 10px 0;
     border: 1px solid #333;
-    border-radius: 6px;
+    border-radius: 5px;
     background-color: #1a1a1a;
     color: #fff;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 input::placeholder { color: #aaa; }
 button {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin-top: 10px;
     background: #f7c800;
     color: #0d0d0d;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 button:hover { 
     background: #e6b800;
@@ -68,20 +59,16 @@ button:hover {
 }
 #captcha {
     font-weight: bold; 
-    letter-spacing: 4px; 
-    font-size: 20px; 
-    margin: 15px 0 5px 0;
+    letter-spacing: 3px; 
+    font-size: 18px; 
+    margin: 10px 0 5px 0;
     color: #f7c800;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 #refreshCaptcha {
     margin-bottom: 10px;
     background: #333;
     color: #f7c800;
     font-size: 14px;
-    opacity: 0;
-    transform: translateY(-20px);
 }
 #refreshCaptcha:hover {
     background: #444;
@@ -97,7 +84,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #0d0d0d;
+    background-color: #060606;
     color: #888;
     text-align: center;
     padding: 10px 0;
@@ -143,7 +130,6 @@ function showMessage(msg) {
     setTimeout(() => { messageEl.innerText = ""; }, 3000);
 }
 
-// ฟังก์ชัน login
 function login() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
@@ -185,20 +171,6 @@ function login() {
         showMessage("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
         generateCaptcha(); // สุ่ม CAPTCHA ใหม่ด้วย
     }
-}
-
-// GSAP Animation
-window.onload = () => {
-    const elements = document.querySelectorAll(".login-container > *:not(#message)");
-    gsap.to(".login-container", {duration: 0.8, opacity: 1, y:0, ease:"power2.out"});
-    gsap.to(elements, {
-        duration: 0.8,
-        y:0,
-        opacity:1,
-        stagger: 0.1,
-        delay: 0.2,
-        ease:"power2.out"
-    });
 }
 </script>
 
