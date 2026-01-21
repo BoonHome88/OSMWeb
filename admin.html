@@ -8,7 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="auth.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld8IlIsAAAAAEOGllzAveCuxGdGLqH62AmPAxB4"></script>
+    
     <style>
         footer {
     position: fixed;
@@ -79,8 +80,18 @@ body {
         <p id="message"></p>
     </div>
     
-    <script>
-        function login() {
+   <script>
+function login() {
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Ld8IlIsAAAAAEOGllzAveCuxGdGLqH62AmPAxB4', {action: 'login'}).then(function(token) {
+            
+            // คุณสามารถตรวจสอบ token เบื้องต้นใน client
+            if (!token) {
+                document.getElementById("message").innerText = "CAPTCHA ตรวจสอบไม่ผ่าน";
+                return;
+            }
+
+            // login ปกติของคุณ
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
@@ -111,12 +122,17 @@ body {
             if (!userFound) {
                 document.getElementById("message").innerText = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
             }
-        }
-    </script>
+
+        });
+    });
+}
+</script>
+
 <footer>
     <p>&copy; 2025 Armmm WorkTool. All rights reserved.</p>
 </footer>
 </body>
 </html>
+
 
 
