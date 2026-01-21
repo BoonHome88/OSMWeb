@@ -9,50 +9,96 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #1a1a1a, #060606);
     margin: 0;
 }
 .login-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 320px;
+    background: #0d0d0d;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-20px);
 }
-h2 { margin-bottom: 20px; }
+h2 { 
+    margin-bottom: 25px; 
+    color: #f7c800;
+    opacity: 0;
+    transform: translateY(-20px);
+}
 input {
     width: calc(100% - 20px);
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-20px);
 }
+input::placeholder { color: #aaa; }
 button {
     width: 100%;
-    padding: 10px;
-    background: #56aaff;
-    color: white;
+    padding: 12px;
+    margin-top: 10px;
+    background: #f7c800;
+    color: #0d0d0d;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(-20px);
 }
-button:hover { background: #22588e; }
-#captcha { font-weight: bold; letter-spacing: 3px; font-size: 18px; margin-bottom: 10px; }
-#message { color: red; margin-top: 10px; text-align: center; }
+button:hover { 
+    background: #e6b800;
+    transform: scale(1.02);
+}
+#captcha {
+    font-weight: bold; 
+    letter-spacing: 4px; 
+    font-size: 20px; 
+    margin: 15px 0 5px 0;
+    color: #f7c800;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+#refreshCaptcha {
+    margin-bottom: 10px;
+    background: #333;
+    color: #f7c800;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+#refreshCaptcha:hover {
+    background: #444;
+    transform: scale(1.05);
+}
+#message { 
+    color: #ff4d4d; 
+    margin-top: 10px; 
+    text-align: center; 
+    min-height: 20px;
+}
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #0d0d0d;
+    color: #888;
     text-align: center;
     padding: 10px 0;
     font-size: 10px;
@@ -67,6 +113,7 @@ footer {
 
     <!-- CAPTCHA -->
     <div id="captcha"></div>
+    <button type="button" id="refreshCaptcha" onclick="generateCaptcha()">🔄 CAPTCHA ใหม่</button>
     <input type="text" id="captchaInput" placeholder="กรอก CAPTCHA">
 
     <button onclick="login()">เข้าสู่ระบบ</button>
@@ -76,23 +123,35 @@ footer {
 <script>
 let currentCaptcha = "";
 
-// ฟังก์ชันสุ่ม CAPTCHA 4 หลัก
+// ฟังก์ชันสุ่ม CAPTCHA ตัวเลข+ตัวอักษร 4 ตัว
 function generateCaptcha() {
-    currentCaptcha = Math.floor(1000 + Math.random() * 9000).toString();
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    currentCaptcha = "";
+    for(let i=0; i<4; i++){
+        currentCaptcha += chars.charAt(Math.floor(Math.random()*chars.length));
+    }
     document.getElementById("captcha").innerText = currentCaptcha;
 }
 
 // เรียก CAPTCHA ตอนโหลดหน้า
 generateCaptcha();
 
+// แสดงข้อความ error หายอัตโนมัติ
+function showMessage(msg) {
+    const messageEl = document.getElementById("message");
+    messageEl.innerText = msg;
+    setTimeout(() => { messageEl.innerText = ""; }, 3000);
+}
+
+// ฟังก์ชัน login
 function login() {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
-    var captchaInput = document.getElementById("captchaInput").value;
+    var captchaInput = document.getElementById("captchaInput").value.toUpperCase();
 
     // ตรวจ CAPTCHA ก่อน
     if (captchaInput !== currentCaptcha) {
-        document.getElementById("message").innerText = "CAPTCHA ไม่ถูกต้อง!";
+        showMessage("CAPTCHA ไม่ถูกต้อง!");
         generateCaptcha(); // สุ่มใหม่ทุกครั้ง
         return;
     }
@@ -123,9 +182,23 @@ function login() {
     }
 
     if (!userFound) {
-        document.getElementById("message").innerText = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
+        showMessage("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
         generateCaptcha(); // สุ่ม CAPTCHA ใหม่ด้วย
     }
+}
+
+// GSAP Animation
+window.onload = () => {
+    const elements = document.querySelectorAll(".login-container > *:not(#message)");
+    gsap.to(".login-container", {duration: 0.8, opacity: 1, y:0, ease:"power2.out"});
+    gsap.to(elements, {
+        duration: 0.8,
+        y:0,
+        opacity:1,
+        stagger: 0.1,
+        delay: 0.2,
+        ease:"power2.out"
+    });
 }
 </script>
 
