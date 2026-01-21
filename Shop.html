@@ -30,12 +30,21 @@
 }
 
 body{
-  color:var(--text);
-  overflow-x:hidden;
+  color: var(--text);
+  overflow-x: hidden;
   position: relative;
-  background: url('https://img5.pic.in.th/file/secure-sv1/bf9abef8-a5f5-4363-8751-61fae2f18c61.jpg') no-repeat center center fixed;
+
+  /* สีพื้นหลังสำรองก่อนโหลดรูป */
+  background-color: #060606; /* สีเดียวกับโทนหลัก */
+  
+  /* พื้นหลังภาพเต็มหน้า */
+  background-image: url('https://img5.pic.in.th/file/secure-sv1/bf9abef8-a5f5-4363-8751-61fae2f18c61.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
 }
+
 
 body::before{
   content:"";
@@ -445,5 +454,6 @@ animateStars();
 
 </body>
 </html>
+
 
 
