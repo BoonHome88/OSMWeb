@@ -9,7 +9,6 @@
   <meta property="og:image" content="https://img5.pic.in.th/file/secure-sv1/rtyrtytryt6e01016a330a6bfa.th.png">
   <meta property="og:type" content="website">
   <link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
-<link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
 
 <style>
 :root{
@@ -34,13 +33,10 @@ body{
   color:var(--text);
   overflow-x:hidden;
   position: relative;
-
-  /* พื้นหลังภาพเต็มหน้า */
   background: url('https://img5.pic.in.th/file/secure-sv1/bf9abef8-a5f5-4363-8751-61fae2f18c61.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
-/* Overlay ดำโปร่ง */
 body::before{
   content:"";
   position:fixed;
@@ -49,7 +45,6 @@ body::before{
   z-index:0;
 }
 
-/* Canvas ดาวตก */
 canvas#starfield {
   position: fixed;
   top: 0;
@@ -60,7 +55,6 @@ canvas#starfield {
   z-index:0;
 }
 
-/* ====== GLOBAL ANIMATION ====== */
 .fade-up{
   opacity:0;
   transform:translateY(30px);
@@ -72,12 +66,11 @@ canvas#starfield {
   transform:translateY(0);
 }
 
-/* ---------- HERO ---------- */
 .hero{
   text-align:center;
   padding:80px 20px 40px;
   position: relative;
-  z-index:1; /* ให้อยู่เหนือ overlay */
+  z-index:1;
 }
 
 .hero-logo {
@@ -129,7 +122,6 @@ canvas#starfield {
   color:var(--muted);
 }
 
-/* ---------- SEARCH ---------- */
 .search-box{
   max-width:900px;
   margin:0 auto 50px;
@@ -177,11 +169,14 @@ canvas#starfield {
   margin:auto;
   padding:0 20px 80px;
   display:grid;
-  grid-template-columns: repeat(5, 1fr); /* Desktop แสดง 5 card ต่อแถว */
+  grid-template-columns: repeat(5, 1fr);
   gap:25px;
+  align-items: stretch; /* ให้การ์ดสูงเท่ากัน */
 }
 
 .card{
+  display:flex;
+  flex-direction:column;
   background:linear-gradient(180deg,#121212,#060606);
   border-radius:18px;
   overflow:hidden;
@@ -206,6 +201,10 @@ canvas#starfield {
 }
 
 .card-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between; /* ทำให้ราคาปุ่มอยู่ก้นการ์ด */
   padding:18px;
 }
 
@@ -252,7 +251,6 @@ canvas#starfield {
   transform:scale(1.05);
 }
 
-/* ---------- FOOTER ---------- */
 footer{
   text-align:center;
   padding:25px;
@@ -261,7 +259,6 @@ footer{
   border-top:1px solid rgba(247,200,0,.15);
 }
 
-/* ---------- RESPONSIVE ---------- */
 @media(max-width:1200px){ .products{grid-template-columns:repeat(4,1fr);} }
 @media(max-width:992px){ .products{grid-template-columns:repeat(3,1fr);} }
 @media(max-width:768px){ 
@@ -275,47 +272,74 @@ footer{
 </head>
 <body>
 
-<!-- Canvas สำหรับดาวตก -->
 <canvas id="starfield"></canvas>
 
 <section class="hero fade-up">
-  <!-- โลโก้เป็นลิงก์ -->
 <a href="Home.html">
   <img src="https://img5.pic.in.th/file/secure-sv1/Group-2-copya326c8b37db7febf.png" alt="ONESMILE SHOP" class="hero-logo">
 </a>
   
-  <p>จำหน่ายสินค้าต่างๆจากเรา OneSmile Club พร้อมรับประกันสุดสายตา</p>
+<p>จำหน่ายสินค้าต่างๆจากเรา OneSmile Club พร้อมรับประกันสุดสายตา</p>
 
-  <div class="stats">
-    <div class="stat fade-up"><h2>1</h2><span>หมวดหมู่</span></div>
-    <div class="stat fade-up"><h2>10</h2><span>สินค้า</span></div>
-    <div class="stat fade-up"><h2>999+</h2><span>จำหน่ายแล้ว</span></div>
-  </div>
+<div class="stats">
+  <div class="stat fade-up"><h2>1</h2><span>หมวดหมู่</span></div>
+  <div class="stat fade-up"><h2>10</h2><span>สินค้า</span></div>
+  <div class="stat fade-up"><h2>999+</h2><span>จำหน่ายแล้ว</span></div>
+</div>
 
-  <div class="search-box fade-up">
-    <input type="text" placeholder="ค้นหาสินค้าที่คุณต้องการ...">
-    <button>ค้นหา</button>
-  </div>
+<div class="search-box fade-up">
+  <input type="text" placeholder="ค้นหาสินค้าที่คุณต้องการ...">
+  <button>ค้นหา</button>
+</div>
 </section>
 
 <section class="products">
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/dsfd00x300.jpg"><div class="card-body"><h3>พระเครื่อง : สมเด็จเปี๊ยก</h3><div class="stock">🟢 คงเหลือ 4 ชิ้น</div><div class="price"><span>฿199.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/Untitled-1849ba57c1696f02d.md.png"><div class="card-body"><h3>สติ๊กเกอร์ : OSM V.2</h3><div class="stock">🟢 คงเหลือ 135 ชิ้น</div><div class="price"><span>฿200.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/imagec217d01583ea19b3.md.png"><div class="card-body"><h3>วิธีรับมือกับหม่องวิน (ฉบับเต็ม)</h3><div class="stock">🔴 หมด</div><div class="price"><span>฿170.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/image2f7470b89457f1ae.md.png"><div class="card-body"><h3>คู่มือการวางมาดสไตล์บุญโฮม</h3><div class="stock">🔴 หมด</div><div class="price"><span>฿150.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/imagebe249881b586323b.md.png"><div class="card-body"><h3>ปกป้องเมียของคุณจากไอ้ดาร์ค</h3><div class="stock">🟢 คงเหลือ 1 ชิ้น</div><div class="price"><span>฿1,200.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img5.pic.in.th/file/secure-sv1/image143de2bcd19db058.png"><div class="card-body"><h3>รวม 29 กระบวนท่าล่านวลนาง By น้าบอง</h3><div class="stock">🟢 คงเหลือ 435 ชิ้น</div><div class="price"><span>฿19.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/image40d43fedc76f06b4.md.png"><div class="card-body"><h3>หนัง R ยุค 90s : คุณชายรัชชานนท์</h3><div class="stock">🟢 คงเหลือ 4 ชิ้น</div><div class="price"><span>฿299.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/imagef01a6c91d1d61c5f.md.png"><div class="card-body"><h3>อัลบั้ม : รอเมียพี่เผลอ</h3><div class="stock">🟢 คงเหลือ 874 ชิ้น</div><div class="price"><span>฿49.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/imagea22a2a7c46498ad8.md.png"><div class="card-body"><h3>โมเดลการ์ตูน 3D : แก๊ง BS (ยุครุ่งเรือง)</h3><div class="stock">🟢 คงเหลือ 4 ชิ้น</div><div class="price"><span>฿459.00</span><button class="buy">ซื้อ</button></div></div></div>
-  <div class="card fade-up"><img src="https://img2.pic.in.th/image2364f05d82400b71.png"><div class="card-body"><h3>สอนแต่งตัวเทสดีขั้นพื้นฐาน โดย อาจารย์เป๊๊ยก</h3><div class="stock">🟢 คงเหลือ 4 ชิ้น</div><div class="price"><span>฿99.00</span><button class="buy">ซื้อ</button></div></div></div>
+  <div class="card fade-up">
+    <img src="https://img5.pic.in.th/file/secure-sv1/dsfd00x300.jpg">
+    <div class="card-body">
+      <h3>พระเครื่อง : สมเด็จเปี๊ยก</h3>
+      <div class="stock">🟢 คงเหลือ 4 ชิ้น</div>
+      <div class="price"><span>฿199.00</span><button class="buy">ซื้อ</button></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-1849ba57c1696f02d.md.png">
+    <div class="card-body">
+      <h3>สติ๊กเกอร์ : OSM V.2</h3>
+      <div class="stock">🟢 คงเหลือ 135 ชิ้น</div>
+      <div class="price"><span>฿200.00</span><button class="buy">ซื้อ</button></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <img src="https://img5.pic.in.th/file/secure-sv1/imagec217d01583ea19b3.md.png">
+    <div class="card-body">
+      <h3>วิธีรับมือกับหม่องวิน (ฉบับเต็ม)</h3>
+      <div class="stock">🔴 หมด</div>
+      <div class="price"><span>฿170.00</span><button class="buy">ซื้อ</button></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <img src="https://img2.pic.in.th/image2f7470b89457f1ae.md.png">
+    <div class="card-body">
+      <h3>คู่มือการวางมาดสไตล์บุญโฮม</h3>
+      <div class="stock">🔴 หมด</div>
+      <div class="price"><span>฿150.00</span><button class="buy">ซื้อ</button></div>
+    </div>
+  </div>
+  <div class="card fade-up">
+    <img src="https://img5.pic.in.th/file/secure-sv1/imagebe249881b586323b.md.png">
+    <div class="card-body">
+      <h3>ปกป้องเมียของคุณจากไอ้ดาร์ค</h3>
+      <div class="stock">🟢 คงเหลือ 1 ชิ้น</div>
+      <div class="price"><span>฿1,200.00</span><button class="buy">ซื้อ</button></div>
+    </div>
+  </div>
 </section>
 
 <footer class="fade-up">
 OneSmile Entertainment | Powered by BoonHome © 2026
 </footer>
 
-<!-- JS ดาวตก + Fade-in -->
 <script>
 // Observer สำหรับ fade-up
 const observer = new IntersectionObserver(entries=>{
@@ -345,7 +369,7 @@ function initStars() {
 }
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "rgba(255, 255, 255, 0.3)"; // 0.3 = สว่างอ่อน
+  ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
   stars.forEach((s) => {
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -371,17 +395,3 @@ animateStars();
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
