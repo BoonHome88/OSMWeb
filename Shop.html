@@ -26,9 +26,22 @@
 }
 
 body{
-  background:#060606;
   color:var(--text);
   overflow-x:hidden;
+
+  /* ✅ พื้นหลังภาพเต็มหน้า */
+  background: url('https://img5.pic.in.th/file/secure-sv1/francesco-ungaro-jqKS0ET-wGE-unsplash.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Overlay ดำโปร่ง ให้ข้อความอ่านง่าย */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,0.6);
+  z-index:0;
 }
 
 /* ====== GLOBAL ANIMATION ====== */
@@ -47,6 +60,8 @@ body{
 .hero{
   text-align:center;
   padding:80px 20px 40px;
+  position: relative;
+  z-index:1; /* ให้ข้อความอยู่เหนือ overlay */
 }
 
 .hero-logo {
@@ -54,7 +69,7 @@ body{
   width:100%;
   height:auto;
   margin-bottom:10px;
-  animation:heroGlow 2.5s ease-in-out infinite alternate; /* effect แบบ h1 */
+  animation:heroGlow 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes heroGlow{
