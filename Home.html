@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneSmile Club</title>
+
   <meta property="og:title" content="OneSmile Club">
   <meta property="og:description" content="OneSmile Club | Member list & Partner&#10;OneSmile Entertainment | Video & Music" />
   <meta property="og:image" content="https://img5.pic.in.th/file/secure-sv1/rtyrtytryt6e01016a330a6bfa.th.png">
@@ -15,11 +16,10 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: #111;
       color: white;
     }
-
 
     /* ---------------- HERO ---------------- */
     .main-content {
@@ -33,7 +33,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      transition: background-image 1s ease-in-out; /* ทำให้เปลี่ยนภาพเนียน */
     }
 
     .main-content::before {
@@ -71,37 +70,24 @@
       max-width: 700px;
     }
 
-    /* Subtitle (center fixed) */
-    .subtitle {
-      width: 100%;
-      text-align: center;
-      font-size: 0.80rem;
-      opacity: 0.75;
-      letter-spacing: 0.8px;
-      margin: 30px auto 0;
+    /* ---------------- BUTTON ---------------- */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
-    .subtitle-link {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.subtitle-link:hover {
-  text-decoration: underline; /* หรือเอาออกได้ */
-}
-
-    /* ---------------- BUTTON ---------------- */
     .btn {
-      display: inline-block;
       padding: 12px 30px;
-      margin: 6px;
       background: #696969;
       color: white;
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      white-space: nowrap;
     }
 
     .btn:hover {
@@ -125,17 +111,12 @@
     }
 
     /* ---------------- GANG ---------------- */
-    .gang {
-      width: 100%;
-    }
-
     .gang h3 {
       margin: 30px 0 15px;
       font-size: 1.6rem;
-      letter-spacing: 1px;
     }
 
-    /* ---------------- FADE IN EFFECT ---------------- */
+    /* ---------------- FADE ---------------- */
     .fade {
       opacity: 0;
       transform: translateY(20px);
@@ -146,7 +127,7 @@
     .delay-2 { animation-delay: 0.4s; }
     .delay-3 { animation-delay: 0.6s; }
     .delay-4 { animation-delay: 0.8s; }
-    .delay-5 { animation-delay: 1.0s; }
+    .delay-5 { animation-delay: 1s; }
     .delay-6 { animation-delay: 1.2s; }
 
     @keyframes fadeUp {
@@ -156,21 +137,27 @@
       }
     }
 
+    /* ---------------- SUBTITLE ---------------- */
+    .subtitle {
+      font-size: 0.8rem;
+      opacity: 0.75;
+      margin-top: 30px;
+    }
+
+    .subtitle-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .subtitle-link:hover {
+      text-decoration: underline;
+    }
+
     /* ---------------- RESPONSIVE ---------------- */
     @media (max-width: 768px) {
-      .logo {
-        width: 80px;
-        height: 80px;
-      }
-      h2 {
-        font-size: 2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .subtitle {
-        font-size: 0.75rem;
-      }
+      h2 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .logo { width: 80px; height: 80px; }
     }
   </style>
 </head>
@@ -180,7 +167,6 @@
   <div class="content">
 
     <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png"
-         alt="OSM Logo"
          class="logo fade delay-1">
 
     <h2 class="fade delay-2">OneSmile Club</h2>
@@ -189,13 +175,11 @@
       OSM | HAPPINESS IS SEEING YOUR FAMILY HAPPY.
     </p>
 
-    <a href="MEMBER.html" class="btn fade delay-4">
-      MEMBER OF ONESMILE
-    </a>
-
-        <a href="Shop.html" class="btn fade delay-4">
-      SHOP
-    </a>
+    <!-- ✅ ปุ่มอยู่บรรทัดเดียวกัน -->
+    <div class="btn-group fade delay-4">
+      <a href="MEMBER.html" class="btn">MEMBER OF ONESMILE</a>
+      <a href="Shop.html" class="btn">SHOP</a>
+    </div>
 
     <div class="gang fade delay-5">
       <h3>GANG & PARTNER</h3>
@@ -203,35 +187,21 @@
       <a class="btns">Babydevil</a>
       <a class="btns">Jujubae</a>
       <a class="btns">Beside X Seth</a>
-      <a class="btns" href=" https://discord.gg/midnightracing " target="_blank" rel="noopener">MR Original</a>
-      <a class="btns" href="https://discord.gg/AQ6V56FSzFw" target="_blank" rel="noopener">OntheFlow</a>
+      <a class="btns" href="https://discord.gg/midnightracing" target="_blank">MR Original</a>
+      <a class="btns" href="https://discord.gg/AQ6V56FSzFw" target="_blank">OntheFlow</a>
 
-
-<p class="subtitle fade delay-6">
-  <a href="https://www.facebook.com/OneSmile168"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="subtitle-link">
-    OneSmile Entertainment
-  </a>
-  | What would I do without you?
-</p>
-
+      <p class="subtitle fade delay-6">
+        <a href="https://www.facebook.com/OneSmile168"
+           target="_blank"
+           class="subtitle-link">
+          OneSmile Entertainment
+        </a>
+        | What would I do without you?
+      </p>
     </div>
 
   </div>
 </section>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
