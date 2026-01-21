@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="auth.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         footer {
     position: fixed;
@@ -73,6 +74,7 @@ body {
         <h2>Armmm Management</h2>
         <input type="text" id="username" placeholder="ชื่อผู้ใช้">
         <input type="password" id="password" placeholder="รหัสผ่าน">
+        <div class="g-recaptcha" data-sitekey="6Ld8IlIsAAAAAEOGllzAveCuxGdGLqH62AmPAxB4"></div>
         <button onclick="login()">เข้าสู่ระบบ</button>
         <p id="message"></p>
     </div>
@@ -116,4 +118,5 @@ body {
 </footer>
 </body>
 </html>
+
 
