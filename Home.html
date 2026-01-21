@@ -4,23 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneSmile Club</title>
-  <script>
-  // ปิดคลิกขวา
-  document.addEventListener('contextmenu', e => e.preventDefault());
-
-  // ปิดปุ่มลัด
-  document.addEventListener('keydown', function(e) {
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && ['I','C','J'].includes(e.key)) ||
-      (e.ctrlKey && e.key === 'U')
-    ) {
-      e.preventDefault();
-    }
-  });
-</script>
-
-
+  
   <meta property="og:title" content="OneSmile Club">
   <meta property="og:description" content="OneSmile Club | Member list & Partner&#10;OneSmile Entertainment | Video & Music" />
   <meta property="og:image" content="https://img5.pic.in.th/file/secure-sv1/rtyrtytryt6e01016a330a6bfa.th.png">
@@ -218,8 +202,23 @@
 
   </div>
 </section>
+  <script>
+  // ปิดคลิกขวา
+  document.addEventListener('contextmenu', e => e.preventDefault());
 
+  // ปิดปุ่มลัด
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && ['I','C','J'].includes(e.key)) ||
+      (e.ctrlKey && e.key === 'U')
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
