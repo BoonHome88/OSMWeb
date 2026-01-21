@@ -504,9 +504,22 @@
   // 🔹 Initial Render
   renderMembers();
 </script>
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
 
+  document.addEventListener('keydown', function(e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && ['I','C','J'].includes(e.key)) ||
+      (e.ctrlKey && e.key === 'U')
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
+
 
 
 
