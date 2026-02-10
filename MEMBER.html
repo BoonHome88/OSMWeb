@@ -462,95 +462,55 @@ footer{
 </div>
 
   <!-- 🔽 Pagination -->
-  <div class="pagination" id="pagination"></div>
+ <div class="pagination" id="pagination"></div>
 </div>
 
 <footer>OneSmile Entertainment | Powered by BoonHome © 2026</footer>
 
-<!-- 🔹 Script -->
 <script>
-  const members = Array.from(document.querySelectorAll('.member'));
-  const search = document.getElementById('search');
-  const pagination = document.getElementById('pagination');
+const members=[...document.querySelectorAll('.member')];
+const search=document.getElementById('search');
+const pagination=document.getElementById('pagination');
 
-  const perPage = 8;
-  let currentPage = parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
-  let filtered = members;
+const perPage=8;
+let currentPage=1;
+let filtered=members;
 
-  // 🔹 Render Members with Animation
-  function renderMembers() {
-    const totalPages = Math.ceil(filtered.length / perPage) || 1;
-    currentPage = Math.min(Math.max(currentPage,1), totalPages);
+function renderMembers(){
+const totalPages=Math.ceil(filtered.length/perPage)||1;
+currentPage=Math.min(Math.max(currentPage,1),totalPages);
 
-    members.forEach(m => { m.classList.remove('show'); m.style.display='none'; });
+members.forEach(m=>{m.classList.remove('show');m.style.display='none';});
 
-    const start = (currentPage-1)*perPage;
-    const end = start+perPage;
-    filtered.slice(start,end).forEach((m,i)=>{
-      m.style.display='flex';
-      setTimeout(()=> m.classList.add('show'), i*50);
-    });
+const start=(currentPage-1)*perPage;
+filtered.slice(start,start+perPage).forEach((m,i)=>{
+m.style.display='flex';
+setTimeout(()=>m.classList.add('show'),i*60);
+});
 
-    renderPagination(totalPages);
-    updateURL();
-  }
+renderPagination(totalPages);
+}
 
-  // 🔹 Render Pagination Buttons
-  function renderPagination(totalPages) {
-    pagination.innerHTML = '';
+function renderPagination(totalPages){
+pagination.innerHTML='';
+for(let i=1;i<=totalPages;i++){
+const btn=document.createElement('button');
+btn.textContent=i;
+if(i===currentPage)btn.classList.add('active');
+btn.onclick=()=>{currentPage=i;renderMembers();};
+pagination.appendChild(btn);
+}
+}
 
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'ก่อนหน้า';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.onclick = ()=> { currentPage--; renderMembers(); };
-    pagination.appendChild(prevBtn);
+search.addEventListener('input',()=>{
+const q=search.value.toLowerCase();
+filtered=members.filter(m=>m.dataset.name.toLowerCase().includes(q));
+currentPage=1;
+renderMembers();
+});
 
-    for(let i=1;i<=totalPages;i++){
-      const btn = document.createElement('button');
-      btn.textContent = i;
-      btn.className = i===currentPage ? 'active' : '';
-      btn.onclick = ()=> { currentPage = i; renderMembers(); };
-      pagination.appendChild(btn);
-    }
-
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'ถัดไป';
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.onclick = ()=> { currentPage++; renderMembers(); };
-    pagination.appendChild(nextBtn);
-  }
-
-  // 🔹 Update URL query string
-  function updateURL() {
-    const url = new URL(window.location);
-    url.searchParams.set('page', currentPage);
-    window.history.replaceState({},'',url);
-  }
-
-  // 🔹 Search Filter
-  search.addEventListener('input', ()=>{
-    const q = search.value.toLowerCase();
-    filtered = members.filter(m => m.dataset.name.toLowerCase().includes(q));
-    currentPage = 1;
-    renderMembers();
-  });
-
-  // 🔹 Initial Render
-  renderMembers();
+renderMembers();
 </script>
-<script>
-  document.addEventListener('contextmenu', e => e.preventDefault());
 
-  document.addEventListener('keydown', function(e) {
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && ['I','C','J'].includes(e.key)) ||
-      (e.ctrlKey && e.key === 'U')
-    ) {
-      e.preventDefault();
-    }
-  });
-</script>
 </body>
 </html>
-
