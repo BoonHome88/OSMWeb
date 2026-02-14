@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เว็บหวยออนไลน์ OSM168 แทงหวยออนไลน์ จ่ายเยอะที่สุด</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<meta property="og:title" content="OneSmile Club">
+<meta property="og:description" content="OneSmile Club | Member list & Partner&#10;OneSmile Entertainment | Video & Music" />
+<meta property="og:image" content="https://img5.pic.in.th/file/secure-sv1/rtyrtytryt6e01016a330a6bfa.th.png">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Prompt',sans-serif;
+}
+
+body{
+    background:#ffffff;
+    color:#222;
+}
+
+/* ===== HEADER ===== */
+header{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 6%;
+    background:#C29612;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+
+.logo img{
+    height:40px;
+    filter: brightness(0) invert(1);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+}
+
+nav a{
+    text-decoration:none;
+    margin:0 15px;
+    color:#ffffff;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav a:hover{
+    opacity:0.85;
+}
+
+.btn{
+    padding:8px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    transition:.3s;
+    margin-left:10px;
+    border:none;
+}
+
+.btn-login{
+    background:#000;
+    color:#fff;
+}
+
+.gold-btn{
+    background:#ffffff;
+    color:#b8860b;
+    font-weight:600;
+}
+
+.gold-btn:hover{
+    opacity:0.9;
+    transform:scale(1.05);
+}
+
+/* ===== SWIPER CASINO ===== */
+.casinoSwiper{
+    width:100%;
+    padding:10px 0;
+}
+
+.casinoSwiper .swiper-slide{
+    width:25% !important;      /* กำหนด 25% */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.casinoSwiper .swiper-slide img{
+    width:100%;
+    height:auto;
+    border-radius:10px;
+}
+
+/* ===== HERO ===== */
+.hero{
+    text-align:center;
+    padding:120px 6%;
+    color:#fff;
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("https://img2.pic.in.th/ChatGPT-Image-Feb-13-2026-11_07_48-PM.png");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero h1{
+    font-size:46px;
+    font-weight:700;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:18px;
+}
+
+/* ===== RESULT ===== */
+.result-section{
+    text-align:center;
+    padding:60px 6%;
+}
+
+.result-box{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.ball{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:700;
+    color:#000;
+    background:linear-gradient(45deg,#caa74e,#f6e27a,#b8860b);
+}
+
+/* ===== PANEL ===== */
+.panel{
+    margin:30px 6%;
+    background:#fff;
+    border:1px solid #e6d28c;
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.panel-header{
+    background:linear-gradient(45deg,#caa74e,#f6e27a,#b8860b);
+    color:#000;
+    padding:12px 15px;
+    font-weight:600;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* ธง + ข้อความ */
+.title-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.flag{
+    width:28px;
+    height:auto;
+    border-radius:4px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.badge{
+    background:#000;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:4px;
+    font-size:13px;
+}
+
+.panel-body{
+    padding:20px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+    text-align:center;
+}
+
+.result-box-lite{
+    background:#faf6e6;
+    padding:15px;
+    border-radius:6px;
+}
+
+.result-box-lite h4{
+    margin-bottom:8px;
+    color:#b8860b;
+}
+
+.table-style{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+.table-style th,
+.table-style td{
+    border:1px solid #eee;
+    padding:10px;
+    text-align:center;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color:#fff !important;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.table-style th{
+    background:#faf6e6;
+    color:#b8860b;
+}
+
+.highlight{
+    color:#b8860b;
+    font-weight:700;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid #eee;
+    margin-top:40px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+<script>
+const casinoSwiper = new Swiper(".casinoSwiper", {
+    loop: true,
+    slidesPerView: 4,      // 4 รูป = 25%
+    spaceBetween: 20,
+    slidesPerGroup: 1,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 4,
+        }
+    }
+});
+</script>
+
+<header>
+    <div class="logo">
+        <img src="https://img2.pic.in.th/www1756c37c551b5c85.md.png" alt="ONESMILE BET">
+    </div>
+    <nav>
+        <a href="Home.html" class="header-back">หน้าแรก</a>
+        <a href="#">ผลหวย</a>
+        <a href="#">โปรโมชั่น</a>
+        <button class="btn btn-login">เข้าสู่ระบบ</button>
+        <button class="btn gold-btn">สมัครสมาชิก</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>เว็บหวยออนไลน์ระดับพรีเมียม</h1>
+    <p>ระบบมาตรฐาน ฝาก-ถอนออโต้ 24 ชั่วโมง</p>
+</section>
+
+<section class="result-section">
+    <h2>ผลหวยล่าสุด</h2>
+    <div class="result-box">
+        <div class="ball">5</div>
+        <div class="ball">4</div>
+        <div class="ball">1</div>
+        <div class="ball">1</div>
+        <div class="ball">2</div>
+        <div class="ball">8</div>
+    </div>
+</section>
+
+<!-- หวยรัฐบาล -->
+<div class="panel">
+    <div class="panel-header">
+        <div class="title-left">
+            <img src="https://flagcdn.com/w40/th.png" class="flag" alt="Thailand">
+            หวยรัฐบาลไทย
+        </div>
+        <span class="badge">2026-02-16</span>
+    </div>
+    <div class="panel-body">
+        <div class="result-grid">
+            <div class="result-box-lite">
+                <h4>3 ตัวบน</h4>
+                541
+            </div>
+            <div class="result-box-lite">
+                <h4>3 ตัวล่าง</h4>
+                128
+            </div>
+            <div class="result-box-lite">
+                <h4>2 ตัวล่าง</h4>
+                12
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- หวยหุ้น -->
+<div class="panel">
+    <div class="panel-header">
+        <div class="title-left">
+            <img src="https://flagcdn.com/w40/th.png" class="flag" alt="Thailand">
+            หวยหุ้นไทย
+        </div>
+        <span class="badge">2026-02-13</span>
+    </div>
+    <div class="panel-body">
+        <table class="table-style">
+            <thead>
+                <tr>
+                    <th>รอบ</th>
+                    <th>3 ตัวบน</th>
+                    <th>2 ตัวล่าง</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>หุ้นไทยเช้า</td>
+                    <td>XXX</td>
+                    <td>XX</td>
+                </tr>
+                <tr>
+                    <td>หุ้นไทยเที่ยง</td>
+                    <td>XXX</td>
+                    <td>XX</td>
+                </tr>
+                <tr>
+                    <td>หุ้นไทยบ่าย</td>
+                    <td>XXX</td>
+                    <td>XX</td>
+                </tr>
+                <tr>
+                    <td>หุ้นไทยเย็น</td>
+                    <td class="highlight">541</td>
+                    <td class="highlight">12</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- คาสิโนสด เเละ กีฬา -->
+<div class="panel">
+    <div class="panel-header">
+        คาสิโนสด เเละ กีฬา
+        <span class="badge">2026-02-13</span>
+    </div>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <div class="panel-body">
+        <div class="swiper casinoSwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/sexygame.40c4566.png" alt="คาสิโน 1">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/sagame.3950635.png" alt="กีฬา 1">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/wmgame.f1dfb05.png" alt="คาสิโน 2">
+                </div>
+				
+				<div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/amb-poker.b5fbebe.png" alt="คาสิโน 3">
+                </div>
+				
+				<div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/pretty.daee94f.png" alt="คาสิโน 4">
+                </div>
+				
+				<div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/sexygame-km.b3f3557.png" alt="คาสิโน 5">
+                </div>
+				
+				<div class="swiper-slide">
+                    <img src="https://lotto432ab.com/_nuxt/img/sbobet.195c08f.png" alt="คาสิโน 6">
+                </div>
+
+            </div>
+
+            <!-- ปุ่มเลื่อน -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- จุด Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+© 2026 OSM168. All rights reserved.
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".casinoSwiper", {
+        loop:true,
+        slidesPerView:4,
+        spaceBetween:20,
+        navigation:{
+            nextEl:".swiper-button-next",
+            prevEl:".swiper-button-prev",
+        },
+        pagination:{
+            el:".swiper-pagination",
+            clickable:true,
+        },
+        breakpoints:{
+            0:{slidesPerView:1},
+            768:{slidesPerView:2},
+            1024:{slidesPerView:4}
+        }
+    });
+});
+</script>
+
+</body>
+</html>
