@@ -106,22 +106,39 @@ nav a:hover{
 
 /* ===== GAME LOGO STRIP ===== */
 .game-logos{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    padding:25px;
+    overflow:hidden;
+    white-space:nowrap;
     border-top:1px solid #eee;
     border-bottom:1px solid #eee;
-    flex-wrap:wrap;
+    padding:25px 0;
 }
+
+.logos-track{
+    display:flex;
+    gap:40px;
+    width:max-content;
+    animation: scrollLogos 20s linear infinite;
+}
+
 .game-logos img{
     height:38px;
     opacity:0.7;
     transition:.3s;
 }
+
 .game-logos img:hover{
     opacity:1;
     transform:scale(1.1);
+}
+
+/* Animation */
+@keyframes scrollLogos{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-50%);
+    }
 }
 
 
@@ -341,6 +358,7 @@ onclick="window.open('https://lin.ee/c1Ca8Ky','_blank')">สมัครเล�
 </section>
 
 <div class="game-logos">
+	<div class="logos-track">
     <img src="https://lotto432ab.com/brand/lalika.png">
     <img src="https://lotto432ab.com/brand/ab.png">
     <img src="https://lotto432ab.com/brand/amb-poker.png">
@@ -352,6 +370,19 @@ onclick="window.open('https://lin.ee/c1Ca8Ky','_blank')">สมัครเล�
     <img src="https://lotto432ab.com/brand/sa.png">
     <img src="https://lotto432ab.com/brand/we.png">
     <img src="https://lotto432ab.com/brand/ctft.png">
+
+	<img src="https://lotto432ab.com/brand/lalika.png">
+    <img src="https://lotto432ab.com/brand/ab.png">
+    <img src="https://lotto432ab.com/brand/amb-poker.png">
+    <img src="https://lotto432ab.com/brand/amb-slot.png">
+    <img src="https://lotto432ab.com/brand/cq.png">
+    <img src="https://lotto432ab.com/brand/joker.png">
+    <img src="https://lotto432ab.com/brand/rich88.png">
+    <img src="https://lotto432ab.com/brand/sexy.png">
+    <img src="https://lotto432ab.com/brand/sa.png">
+    <img src="https://lotto432ab.com/brand/we.png">
+    <img src="https://lotto432ab.com/brand/ctft.png">
+</div>
 </div>
 
 <section class="result-section">
@@ -574,6 +605,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
