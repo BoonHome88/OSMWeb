@@ -787,7 +787,12 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   });
 </script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("contextmenu", e => e.preventDefault());
+  });
+});
+</script>
 </body>
 </html>
-
