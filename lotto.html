@@ -7,12 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<meta property="og:title" content="@OSM168 แทงหวยออนไลน์ จ่ายเยอะที่สุด">
-<meta property="og:description" content="เว็บหวยออนไลน์ OSM168 แทงหวยออนไลน์ จ่ายเยอะที่สุด&#10;ซื้อหวยออนไลน์ เว็บตรงแท้ 100% แทงหวย ได้ครบทุกเลข ไม่มีอั้น ตลอด 24 ชม. ระบบทันสมัย ออโต้ ปลอดภัย จ่ายจริง อัตราจ่ายสูง เล่นง่ายทุกอุปกรณ์." />
-<meta property="og:image" content="https://img2.pic.in.th/ChatGPT-Image-Feb-15-2026-09_34_55-PM.th.png">
-<meta property="og:type" content="website">
-
-<link rel="icon" href="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.th.png" type="image/png">
 
 <style>
 *{
@@ -38,9 +32,7 @@ header{
     box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
 
-.logo img{
-    height:40px;
-}
+.logo img{ height:40px; }
 
 nav{
     display:flex;
@@ -55,9 +47,7 @@ nav a{
     transition:.3s;
 }
 
-nav a:hover{
-    opacity:0.85;
-}
+nav a:hover{ opacity:0.85; }
 
 .btn{
     padding:8px 18px;
@@ -76,8 +66,9 @@ nav a:hover{
 .gold-btn{
     background:linear-gradient(45deg,#caa74e,#f6e27a,#b8860b);
     color:#000;
-    border:none;
     font-weight:600;
+    position:relative;
+    overflow:hidden;
 }
 
 .gold-btn:hover{
@@ -85,65 +76,20 @@ nav a:hover{
     transform:scale(1.05);
 }
 
-/* ===== SWIPER CASINO ===== */
-.casinoSwiper{
+.gold-btn::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
     width:100%;
-    padding:10px 0;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
+    transition:0.6s;
 }
 
-.casinoSwiper .swiper-slide{
-    width:25% !important;      /* กำหนด 25% */
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.gold-btn:hover::after{
+    left:100%;
 }
-
-.casinoSwiper .swiper-slide img{
-    width:100%;
-    height:auto;
-    border-radius:10px;
-}
-
-/* ===== GAME LOGO STRIP ===== */
-.game-logos{
-    overflow:hidden;
-    white-space:nowrap;
-    border-top:1px solid #eee;
-    border-bottom:1px solid #eee;
-    padding:25px 0;
-}
-
-.logos-track{
-    display:flex;
-    gap:40px;
-    width:max-content;
-    animation: scrollLogos 44s linear infinite;
-}
-
-.game-logos img{
-    height:38px;
-    opacity:1;
-    transition:.3s;
-}
-
-.game-logos img:hover{
-    opacity:1;
-    transform:scale(1.1);
-}
-.game-logos:hover .logos-track{
-    animation-play-state: paused;
-}
-	
-/* Animation */
-@keyframes scrollLogos{
-    0%{
-        transform: translateX(0);
-    }
-    100%{
-        transform: translateX(-50%);
-    }
-}
-
 
 /* ===== HERO ===== */
 .hero{
@@ -160,11 +106,62 @@ nav a:hover{
 .hero h1{
     font-size:46px;
     font-weight:700;
+    opacity:0;
+    transform:translateY(30px);
+    animation:heroFade 1s forwards ease;
 }
 
 .hero p{
     margin-top:15px;
     font-size:18px;
+    opacity:0;
+    transform:translateY(30px);
+    animation:heroFade 1.5s forwards ease;
+}
+
+.hero .gold-btn{
+    margin-top:20px;
+    opacity:0;
+    transform:translateY(30px);
+    animation:heroFade 2s forwards ease;
+}
+
+@keyframes heroFade{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== GAME LOGOS ===== */
+.game-logos{
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+    padding:25px 0;
+}
+
+.logos-track{
+    display:flex;
+    gap:40px;
+    width:max-content;
+    animation: scrollLogos 44s linear infinite;
+}
+
+@keyframes scrollLogos{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+}
+
+.game-logos img{
+    height:38px;
+    animation:logoFade 3s infinite alternate;
+}
+
+@keyframes logoFade{
+    from{opacity:0.7;}
+    to{opacity:1;}
 }
 
 /* ===== RESULT ===== */
@@ -191,30 +188,12 @@ nav a:hover{
     font-weight:700;
     color:#000;
     background:linear-gradient(45deg,#caa74e,#f6e27a,#b8860b);
-}
-	
-.ad-container {
-  display: flex;
-  justify-content: center;
-  margin: 15px 0;
+    animation:bounceBall 1.2s infinite alternate ease-in-out;
 }
 
-.ad-container a {
-  display: inline-block;
-  max-width: 1000px;
-  width: 100%;
-}
-
-.ad-container img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-
-.ad-container img:hover {
-  transform: scale(1.02);
+@keyframes bounceBall{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(-8px); }
 }
 
 /* ===== PANEL ===== */
@@ -224,6 +203,12 @@ nav a:hover{
     border:1px solid #e6d28c;
     border-radius:8px;
     overflow:hidden;
+    transition:all .4s ease;
+}
+
+.panel:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(0,0,0,0.15);
 }
 
 .panel-header{
@@ -231,59 +216,26 @@ nav a:hover{
     color:#000;
     padding:12px 15px;
     font-weight:600;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
 }
 
-/* ธง + ข้อความ */
-.title-left{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.panel-body{ padding:20px; }
+
+/* Scroll Reveal */
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all .8s ease;
 }
 
-.flag{
-    width:28px;
-    height:auto;
-    border-radius:4px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+.fade-in.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-.badge{
-    background:#000;
-    color:#fff;
-    padding:3px 8px;
-    border-radius:4px;
-    font-size:13px;
-}
-
-.panel-body{
-    padding:20px;
-}
-
-.result-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:15px;
-    text-align:center;
-}
-
-.result-box-lite{
-    background:#faf6e6;
-    padding:15px;
-    border-radius:6px;
-}
-
-.result-box-lite h4{
-    margin-bottom:8px;
-    color:#b8860b;
-}
-
+/* TABLE */
 .table-style{
     width:100%;
     border-collapse:collapse;
-    margin-top:10px;
 }
 
 .table-style th,
@@ -293,22 +245,17 @@ nav a:hover{
     text-align:center;
 }
 
-.swiper-button-next,
-.swiper-button-prev{
-    color:#fff !important;
-    width:45px;
-    height:45px;
-    border-radius:50%;
-}
-
 .table-style th{
     background:#faf6e6;
     color:#b8860b;
 }
 
-.highlight{
-    color:#b8860b;
-    font-weight:700;
+.table-style tbody tr{
+    transition:.3s;
+}
+
+.table-style tbody tr:hover{
+    background:#fffdf5;
 }
 
 footer{
@@ -318,18 +265,6 @@ footer{
     margin-top:40px;
     color:#777;
 }
-/* จุดปกติ */
-.swiper-pagination-bullet{
-    background:#ffffff !important;
-    opacity:0.6;
-}
-
-/* จุดที่กำลัง active */
-.swiper-pagination-bullet-active{
-    background:#ffffff !important;
-    opacity:1;
-}
-
 </style>
 </head>
 
@@ -634,6 +569,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
+document.addEventListener("DOMContentLoaded", function(){
+    const faders = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+            }
+        });
+    },{threshold:0.2});
+    faders.forEach(el=>observer.observe(el));
+});
+</script>
+<script>
   document.addEventListener('contextmenu', e => e.preventDefault());
 
   document.addEventListener('keydown', function(e) {
@@ -649,6 +597,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
