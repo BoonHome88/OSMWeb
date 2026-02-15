@@ -762,6 +762,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("contextmenu", e => e.preventDefault());
+  });
+});
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", function(){
     const faders = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(entries=>{
@@ -787,12 +795,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   });
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll("img").forEach(img => {
-    img.addEventListener("contextmenu", e => e.preventDefault());
-  });
-});
-</script>
 </body>
 </html>
+
