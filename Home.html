@@ -208,6 +208,25 @@
 </head>
 <body>
 
+<audio id="bgSound" autoplay loop muted>
+    <source src="sound.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const audio = document.getElementById("bgSound");
+
+// ตั้งค่าความดังล่วงหน้า
+audio.volume = 0.4;
+
+// พยายามเปิดเสียงอัตโนมัติ
+window.addEventListener("load", () => {
+    audio.muted = false;
+    audio.play().catch(() => {
+        console.log("Browser blocked autoplay with sound");
+    });
+});
+</script>
+
 <section class="main-content">
   <div class="content">
 
@@ -295,6 +314,7 @@
 
 </body>
 </html>
+
 
 
 
