@@ -530,7 +530,6 @@ const cover=document.getElementById("cover");
 
 if(!audio || !playBtn || !minus || !plus || !bubble || !panel){
   console.warn("Player elements missing");
-  return;   // <<< หยุด script ทันที
 }
 
 audio.volume=0.4;
@@ -629,6 +628,7 @@ bubble.addEventListener("touchend",(e)=>{
 
 </body>
 </html>
+
 
 
 
