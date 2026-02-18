@@ -372,19 +372,62 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 .bubble-cover{
+  position:relative;
   width:60px;
   height:60px;
   border-radius:50%;
-  background:url('https://img2.pic.in.th/Untitled-1bc8792a6c7a0f149.png') center/cover;
+  background:
+    radial-gradient(circle at center, #111 35%, #000 36%),
+    repeating-radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.04) 0px,
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
+  background-blend-mode:overlay;
+  overflow:hidden;
+  animation:spin 8s linear infinite;
 }
 
-.bubble-cover{
-  width:60px;
-  height:60px;
+/* เงาสะท้อน */
+.bubble-cover::after{
+  content:"";
+  position:absolute;
+  inset:0;
   border-radius:50%;
-  background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
-  animation:spin 12s linear infinite;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,0.4) 0%,
+    rgba(255,255,255,0.15) 20%,
+    transparent 40%
+  );
+  transform:rotate(25deg);
+  mix-blend-mode:soft-light;
+  pointer-events:none;
 }
+
+/* จุดกลางแผ่นเสียง */
+.bubble-cover::before{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  background:#111;
+  border:2px solid #333;
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 4px rgba(0,0,0,0.6);
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
 
 
 @keyframes spin{
@@ -572,6 +615,7 @@ bubble.addEventListener("touchend",(e)=>{
 
 </body>
 </html>
+
 
 
 
