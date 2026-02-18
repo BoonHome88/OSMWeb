@@ -316,16 +316,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 </script>
 
-<!-- ===== FLOATING BUBBLE PLAYER ===== -->
+<!-- ===== iOS FLOATING BUBBLE PLAYER ===== -->
 <div class="music-bubble" id="musicBubble">
   <div class="bubble-cover" id="cover"></div>
 </div>
 
 <div class="music-panel" id="musicPanel">
   <div class="panel-header">
-    <div class="panel-cover" id="panelCover"></div>
+    <div class="panel-cover"></div>
     <div>
-      <div class="panel-title">One Smile Family Song</div>
+      <div class="panel-title">One Smile Family</div>
       <div class="panel-artist">One Smile BotAI</div>
     </div>
   </div>
@@ -336,6 +336,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <div class="panel-controls">
     <button id="playBtn">▶</button>
+  </div>
+
+  <div class="panel-volume">
+    🔊
+    <input type="range" id="volume" min="0" max="1" step="0.01">
   </div>
 </div>
 
@@ -354,15 +359,16 @@ document.addEventListener("DOMContentLoaded", function () {
   width:70px;
   height:70px;
   border-radius:50%;
-  backdrop-filter:blur(25px);
   background:rgba(40,40,40,0.7);
+  backdrop-filter:blur(25px);
   box-shadow:0 10px 40px rgba(0,0,0,0.5);
   display:flex;
   justify-content:center;
   align-items:center;
   cursor:pointer;
   z-index:9999;
-  transition:0.4s ease;
+  transition:transform 0.3s ease, opacity 0.3s ease;
+  touch-action:none;
 }
 
 .bubble-cover{
@@ -370,7 +376,6 @@ document.addEventListener("DOMContentLoaded", function () {
   height:60px;
   border-radius:50%;
   background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
-  transition:transform 0.6s linear;
 }
 
 .bubble-cover.playing{
@@ -390,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
   width:280px;
   padding:20px;
   border-radius:28px;
-  background:rgba(30,30,30,0.8);
+  background:rgba(30,30,30,0.85);
   backdrop-filter:blur(35px);
   box-shadow:0 20px 60px rgba(0,0,0,0.5);
   color:white;
@@ -401,15 +406,7 @@ document.addEventListener("DOMContentLoaded", function () {
   z-index:9998;
 }
 
-.music-panel.show{
-  display:flex;
-  animation:fadeUp 0.4s ease;
-}
-
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
+.music-panel.show{ display:flex; }
 
 .panel-header{
   display:flex;
@@ -424,9 +421,6 @@ document.addEventListener("DOMContentLoaded", function () {
   background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
 }
 
-.panel-title{ font-weight:600; }
-.panel-artist{ font-size:0.8rem; opacity:0.6; }
-
 .panel-progress{
   height:4px;
   background:rgba(255,255,255,0.2);
@@ -439,7 +433,6 @@ document.addEventListener("DOMContentLoaded", function () {
   height:100%;
   width:0%;
   background:var(--accent);
-  border-radius:5px;
 }
 
 .panel-controls{
@@ -455,11 +448,31 @@ document.addEventListener("DOMContentLoaded", function () {
   color:black;
   font-size:16px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.panel-controls button:hover{
-  transform:scale(1.1);
+.panel-volume{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.panel-volume input{
+  flex:1;
+  appearance:none;
+  height:4px;
+  border-radius:5px;
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);
+  outline:none;
+}
+
+.panel-volume input::-webkit-slider-thumb{
+  appearance:none;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--accent);
+  cursor:pointer;
 }
 
 /* Responsive */
@@ -476,8 +489,10 @@ const playBtn=document.getElementById("playBtn");
 const progress=document.getElementById("progress");
 const progressBar=document.getElementById("progressBar");
 const cover=document.getElementById("cover");
+const volume=document.getElementById("volume");
 
 audio.volume=0.4;
+volume.value=0.4;
 
 /* Auto play */
 window.addEventListener("load",()=>{
@@ -505,6 +520,11 @@ playBtn.addEventListener("click",()=>{
   }
 });
 
+/* Volume */
+volume.addEventListener("input",()=>{
+  audio.volume=volume.value;
+});
+
 /* Progress */
 audio.addEventListener("timeupdate",()=>{
   const percent=(audio.currentTime/audio.duration)*100;
@@ -517,24 +537,37 @@ progressBar.addEventListener("click",(e)=>{
   audio.currentTime=(clickX/width)*audio.duration;
 });
 
-/* Dynamic Color */
-const img=new Image();
-img.crossOrigin="anonymous";
-img.src="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png";
-img.onload=function(){
-  const canvas=document.createElement("canvas");
-  const ctx=canvas.getContext("2d");
-  canvas.width=img.width;
-  canvas.height=img.height;
-  ctx.drawImage(img,0,0);
-  const data=ctx.getImageData(0,0,1,1).data;
-  const color=`rgb(${data[0]},${data[1]},${data[2]})`;
-  document.documentElement.style.setProperty("--accent",color);
-};
+/* Swipe Down to Close Bubble */
+let startY=0;
+bubble.addEventListener("touchstart",(e)=>{
+  startY=e.touches[0].clientY;
+});
+
+bubble.addEventListener("touchmove",(e)=>{
+  let moveY=e.touches[0].clientY-startY;
+  if(moveY>0){
+    bubble.style.transform=`translateY(${moveY}px)`;
+    bubble.style.opacity=1-(moveY/200);
+  }
+});
+
+bubble.addEventListener("touchend",(e)=>{
+  let endY=e.changedTouches[0].clientY-startY;
+  if(endY>120){
+    bubble.style.opacity="0";
+    setTimeout(()=>bubble.style.display="none",300);
+    audio.pause();
+  }else{
+    bubble.style.transform="translateY(0)";
+    bubble.style.opacity="1";
+  }
+});
 </script>
+
 
 </body>
 </html>
+
 
 
 
