@@ -360,6 +360,15 @@
   from{transform:rotate(0deg);}
   to{transform:rotate(360deg);}
 }
+  
+.music-bubble:active{
+  transform:scale(0.92);
+}
+
+.panel-progress-inner{
+  transition:width 0.2s linear;
+}
+
 
 /* Panel */
 .music-panel{
@@ -456,23 +465,25 @@
 
 /* main play button */
 .play-main{
-  width:68px;
-  height:68px;
+  width:70px;
+  height:70px;
   border-radius:50%;
-  background:linear-gradient(145deg,#ffffff,#dcdcdc);
-  color:black;
-  font-size:26px;
-  font-weight:bold;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(30px);
+  color:white;
+  font-size:24px;
+  font-weight:600;
   display:flex;
   align-items:center;
   justify-content:center;
   box-shadow:
-    0 8px 25px rgba(0,0,0,0.4),
-    inset 0 2px 5px rgba(255,255,255,0.6);
+    0 10px 35px rgba(0,0,0,0.4),
+    inset 0 2px 8px rgba(255,255,255,0.4);
 }
 
 .play-main:hover{
   transform:scale(1.08);
+  background:rgba(255,255,255,0.25);
 }
 
 .play-main:active{
@@ -621,6 +632,7 @@ bubble.addEventListener("touchend",(e)=>{
 
 </body>
 </html>
+
 
 
 
