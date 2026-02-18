@@ -208,17 +208,26 @@
 </head>
 <body>
 
-<audio id="bgSound" autoplay loop muted>
-    <source src="sound.mp3" type="audio/mpeg">
+<audio id="bgSound" loop preload="auto">
+    <source src="./sound.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const audio = document.getElementById("bgSound");
-audio.volume = 0.4;
+document.addEventListener("DOMContentLoaded", function () {
 
-window.addEventListener("load", () => {
-    audio.muted = false;
-    audio.play().catch(()=>{});
+    const audio = document.getElementById("bgSound");
+    audio.volume = 0.35;
+
+    function tryPlay() {
+        audio.play().then(() => {
+            console.log("Sound playing");
+        }).catch(() => {
+            // ถ้าโดนบล็อก จะลองใหม่เรื่อย ๆ
+            setTimeout(tryPlay, 1000);
+        });
+    }
+
+    tryPlay();
 });
 </script>
 
@@ -309,6 +318,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
