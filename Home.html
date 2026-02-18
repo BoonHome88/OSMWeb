@@ -214,16 +214,11 @@
 
 <script>
 const audio = document.getElementById("bgSound");
-
-// ตั้งค่าความดังล่วงหน้า
 audio.volume = 0.4;
 
-// พยายามเปิดเสียงอัตโนมัติ
 window.addEventListener("load", () => {
     audio.muted = false;
-    audio.play().catch(() => {
-        console.log("Browser blocked autoplay with sound");
-    });
+    audio.play().catch(()=>{});
 });
 </script>
 
@@ -314,6 +309,7 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
 
 
 
