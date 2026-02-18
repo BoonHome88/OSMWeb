@@ -424,32 +424,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 }
 </style>
-<!-- ===== iOS STYLE MINI PLAYER ===== -->
-<div class="ios-player">
-  <div class="ios-cover" id="cover"></div>
 
-  <div class="ios-content">
-    <div class="ios-title">OneSmile Song</div>
-    <div class="ios-artist">OneSmile AI</div>
+<!-- ===== FLOATING BUBBLE PLAYER ===== -->
+<div class="music-bubble" id="musicBubble">
+  <div class="bubble-cover" id="cover"></div>
+</div>
 
-    <div class="ios-progress-container">
-      <div class="ios-progress-bar" id="progressBar">
-        <div class="ios-progress" id="progress"></div>
-      </div>
-      <div class="ios-time">
-        <span id="currentTime">0:00</span>
-        <span id="duration">0:00</span>
-      </div>
+<div class="music-panel" id="musicPanel">
+  <div class="panel-header">
+    <div class="panel-cover" id="panelCover"></div>
+    <div>
+      <div class="panel-title">One Smile Family Song.mp3</div>
+      <div class="panel-artist">One Smile Bot AI</div>
     </div>
+  </div>
 
-    <div class="ios-controls">
-      <button id="playBtn">▶</button>
-    </div>
+  <div class="panel-progress" id="progressBar">
+    <div class="panel-progress-inner" id="progress"></div>
+  </div>
 
-    <div class="ios-volume">
-      🔊
-      <input type="range" id="volume" min="0" max="1" step="0.01">
-    </div>
+  <div class="panel-controls">
+    <button id="playBtn">▶</button>
   </div>
 </div>
 
@@ -458,62 +453,90 @@ document.addEventListener("DOMContentLoaded", function () {
 </audio>
 
 <style>
-:root{
-  --accent: #ffffff;
-}
+:root{ --accent:#ffffff; }
 
-.ios-player{
+/* Bubble */
+.music-bubble{
   position:fixed;
   bottom:20px;
   right:20px;
-  width:320px;
-  padding:18px;
-  border-radius:28px;
-  background:rgba(30,30,30,0.75);
-  backdrop-filter:blur(35px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.5);
-  color:white;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  backdrop-filter:blur(25px);
+  background:rgba(40,40,40,0.7);
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
   display:flex;
-  gap:15px;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
   z-index:9999;
   transition:0.4s ease;
 }
 
-.ios-cover{
-  width:80px;
-  height:80px;
-  border-radius:22px;
+.bubble-cover{
+  width:60px;
+  height:60px;
+  border-radius:50%;
   background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
-  flex-shrink:0;
-  transition:transform 0.5s linear;
+  transition:transform 0.6s linear;
 }
 
-.ios-cover.playing{
-  animation:spin 8s linear infinite;
+.bubble-cover.playing{
+  animation:spin 10s linear infinite;
 }
 
 @keyframes spin{
-  from{ transform:rotate(0deg);}
-  to{ transform:rotate(360deg);}
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
-.ios-content{
-  flex:1;
+/* Panel */
+.music-panel{
+  position:fixed;
+  bottom:100px;
+  right:20px;
+  width:280px;
+  padding:20px;
+  border-radius:28px;
+  background:rgba(30,30,30,0.8);
+  backdrop-filter:blur(35px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  display:none;
+  flex-direction:column;
+  gap:15px;
+  z-index:9998;
 }
 
-.ios-title{
-  font-weight:600;
-  font-size:0.95rem;
+.music-panel.show{
+  display:flex;
+  animation:fadeUp 0.4s ease;
 }
 
-.ios-artist{
-  font-size:0.8rem;
-  opacity:0.6;
-  margin-bottom:10px;
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
-.ios-progress-bar{
+.panel-header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.panel-cover{
+  width:60px;
+  height:60px;
+  border-radius:16px;
+  background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
+}
+
+.panel-title{ font-weight:600; }
+.panel-artist{ font-size:0.8rem; opacity:0.6; }
+
+.panel-progress{
   height:4px;
   background:rgba(255,255,255,0.2);
   border-radius:5px;
@@ -521,116 +544,80 @@ document.addEventListener("DOMContentLoaded", function () {
   overflow:hidden;
 }
 
-.ios-progress{
+.panel-progress-inner{
   height:100%;
   width:0%;
   background:var(--accent);
   border-radius:5px;
-  transition:width 0.1s linear;
 }
 
-.ios-time{
-  display:flex;
-  justify-content:space-between;
-  font-size:0.7rem;
-  opacity:0.7;
-  margin-top:4px;
-}
-
-.ios-controls{
+.panel-controls{
   text-align:center;
-  margin:12px 0;
 }
 
-.ios-controls button{
-  width:42px;
-  height:42px;
+.panel-controls button{
+  width:45px;
+  height:45px;
   border-radius:50%;
   border:none;
   background:var(--accent);
   color:black;
-  font-size:15px;
+  font-size:16px;
   cursor:pointer;
   transition:0.3s;
 }
 
-.ios-controls button:hover{
+.panel-controls button:hover{
   transform:scale(1.1);
 }
 
-.ios-volume{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.ios-volume input{
-  flex:1;
-  appearance:none;
-  height:4px;
-  border-radius:5px;
-  background:rgba(255,255,255,0.2);
-  backdrop-filter:blur(10px);
-  outline:none;
-}
-
-.ios-volume input::-webkit-slider-thumb{
-  appearance:none;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:var(--accent);
-  cursor:pointer;
-}
-
+/* Responsive */
 @media(max-width:768px){
-  .ios-player{
-    width:90%;
-    right:5%;
-  }
+  .music-panel{ width:90%; right:5%; }
 }
 </style>
 
 <script>
-const audio = document.getElementById("bgSound");
-const playBtn = document.getElementById("playBtn");
-const progress = document.getElementById("progress");
-const progressBar = document.getElementById("progressBar");
-const currentTimeEl = document.getElementById("currentTime");
-const durationEl = document.getElementById("duration");
-const volume = document.getElementById("volume");
-const cover = document.getElementById("cover");
+const audio=document.getElementById("bgSound");
+const bubble=document.getElementById("musicBubble");
+const panel=document.getElementById("musicPanel");
+const playBtn=document.getElementById("playBtn");
+const progress=document.getElementById("progress");
+const progressBar=document.getElementById("progressBar");
+const cover=document.getElementById("cover");
 
-audio.volume = 0.4;
-volume.value = 0.4;
+audio.volume=0.4;
 
-/* Auto Play */
-window.addEventListener("load", () => {
+/* Auto play */
+window.addEventListener("load",()=>{
   audio.play().then(()=>{
-    playBtn.innerHTML="❚❚";
     cover.classList.add("playing");
+    playBtn.innerHTML="❚❚";
   }).catch(()=>{});
 });
 
+/* Toggle Panel */
+bubble.addEventListener("click",()=>{
+  panel.classList.toggle("show");
+});
+
 /* Play Pause */
-playBtn.addEventListener("click", ()=>{
+playBtn.addEventListener("click",()=>{
   if(audio.paused){
     audio.play();
-    playBtn.innerHTML="❚❚";
     cover.classList.add("playing");
+    playBtn.innerHTML="❚❚";
   }else{
     audio.pause();
-    playBtn.innerHTML="▶";
     cover.classList.remove("playing");
+    playBtn.innerHTML="▶";
   }
 });
 
 /* Progress */
-audio.addEventListener("timeupdate", ()=>{
+audio.addEventListener("timeupdate",()=>{
   const percent=(audio.currentTime/audio.duration)*100;
   progress.style.width=percent+"%";
-  currentTimeEl.textContent=formatTime(audio.currentTime);
-  durationEl.textContent=formatTime(audio.duration);
 });
 
 progressBar.addEventListener("click",(e)=>{
@@ -639,24 +626,10 @@ progressBar.addEventListener("click",(e)=>{
   audio.currentTime=(clickX/width)*audio.duration;
 });
 
-/* Volume */
-volume.addEventListener("input",()=>{
-  audio.volume=volume.value;
-});
-
-/* Format Time */
-function formatTime(t){
-  if(isNaN(t)) return "0:00";
-  const m=Math.floor(t/60);
-  const s=Math.floor(t%60);
-  return m+":"+(s<10?"0"+s:s);
-}
-
-/* 🎨 Dynamic Color from Cover */
-const img = new Image();
+/* Dynamic Color */
+const img=new Image();
 img.crossOrigin="anonymous";
 img.src="https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png";
-
 img.onload=function(){
   const canvas=document.createElement("canvas");
   const ctx=canvas.getContext("2d");
@@ -669,8 +642,10 @@ img.onload=function(){
 };
 </script>
 
+  
 </body>
 </html>
+
 
 
 
