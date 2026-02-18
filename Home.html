@@ -316,115 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 </script>
 
-  <!-- ===== MINI APPLE MUSIC PLAYER ===== -->
-<div class="mini-player" id="miniPlayer">
-  <div class="mini-left">
-    <div class="mini-cover"></div>
-    <div class="mini-info">
-      <div class="mini-title">OneSmile Theme</div>
-      <div class="mini-artist">OneSmile Club</div>
-    </div>
-  </div>
-
-  <div class="mini-controls">
-    <button id="miniPlay">▶</button>
-  </div>
-
-  <div class="mini-expand" id="expandBtn">▲</div>
-</div>
-
-<audio id="bgSound" preload="auto">
-  <source src="./sound.mp3" type="audio/mpeg">
-</audio>
-
-<style>
-.mini-player{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:280px;
-  padding:14px 18px;
-  border-radius:20px;
-  background:rgba(25,25,25,0.85);
-  backdrop-filter:blur(25px);
-  box-shadow:0 8px 30px rgba(0,0,0,0.4);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  color:white;
-  transition:0.4s ease;
-  z-index:9999;
-}
-
-.mini-player.expanded{
-  width:340px;
-  padding-bottom:20px;
-}
-
-.mini-left{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.mini-cover{
-  width:46px;
-  height:46px;
-  border-radius:12px;
-  background:url('https://img5.pic.in.th/file/secure-sv1/Untitled-1bc8792a6c7a0f149.png') center/cover;
-}
-
-.mini-title{
-  font-size:0.9rem;
-  font-weight:500;
-}
-
-.mini-artist{
-  font-size:0.75rem;
-  opacity:0.6;
-}
-
-.mini-controls button{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:none;
-  background:white;
-  color:black;
-  font-size:14px;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.mini-controls button:hover{
-  transform:scale(1.1);
-}
-
-.mini-expand{
-  position:absolute;
-  top:-8px;
-  right:12px;
-  font-size:12px;
-  cursor:pointer;
-  opacity:0.5;
-  transition:0.3s;
-}
-
-.mini-expand:hover{
-  opacity:1;
-}
-
-/* Responsive */
-@media(max-width:768px){
-  .mini-player{
-    width:90%;
-    right:5%;
-    bottom:15px;
-  }
-}
-</style>
-
 <!-- ===== FLOATING BUBBLE PLAYER ===== -->
 <div class="music-bubble" id="musicBubble">
   <div class="bubble-cover" id="cover"></div>
@@ -434,8 +325,8 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="panel-header">
     <div class="panel-cover" id="panelCover"></div>
     <div>
-      <div class="panel-title">One Smile Family Song.mp3</div>
-      <div class="panel-artist">One Smile Bot AI</div>
+      <div class="panel-title">One Smile Family Song</div>
+      <div class="panel-artist">One Smile BotAI</div>
     </div>
   </div>
 
@@ -642,9 +533,9 @@ img.onload=function(){
 };
 </script>
 
-  
 </body>
 </html>
+
 
 
 
