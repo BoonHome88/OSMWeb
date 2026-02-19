@@ -326,26 +326,14 @@
 
 </div>
 <style>
-:root{ --accent:#ffffff; }
-
+:root{ --accent:#ffffff;
+--bubble-size:70px;     /* ขนาดวงกลม */
+--panel-width:300px;    /* ความยาวด้านข้างที่อยากให้ยืด */
+}
 /* Bubble */
 .music-bubble{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  background:rgba(40,40,40,0.7);
-  backdrop-filter:blur(25px);
-  box-shadow:0 10px 40px rgba(0,0,0,0.5);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-  z-index:9999;
-  transition:transform 0.3s ease, opacity 0.3s ease;
-  touch-action:none;
+  width:var(--bubble-size);
+  height:var(--bubble-size);
 }
 
 .bubble-cover{
@@ -374,23 +362,23 @@
 .music-panel{
   position:fixed;
   bottom:20px;
-  right:110px;
+  right:calc(20px + var(--bubble-size) + 10px);
 
-  width:380px;
-  height:95px;
+  height:var(--bubble-size);
+  width:var(--panel-width);
 
-  padding:14px 18px;
-  border-radius:28px;
+  border-radius:calc(var(--bubble-size) / 2);
 
   display:flex;
   align-items:center;
   gap:15px;
+  padding:0 20px;
 
   backdrop-filter:blur(40px);
   background:rgba(25,25,25,0.75);
   box-shadow:0 20px 60px rgba(0,0,0,.6);
 
-  transform:translateX(60px);
+  transform:translateX(40px);
   opacity:0;
   pointer-events:none;
   transition:all .45s cubic-bezier(.22,1,.36,1);
@@ -640,6 +628,7 @@ bubble.addEventListener("touchend",(e)=>{
 
 </body>
 </html>
+
 
 
 
