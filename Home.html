@@ -327,13 +327,26 @@
 </div>
 <style>
 :root{ --accent:#ffffff;
---bubble-size:70px;     /* ขนาดวงกลม */
---panel-width:300px;    /* ความยาวด้านข้างที่อยากให้ยืด */
+--bubble-size:70px;
+--panel-width:320px;
 }
 /* Bubble */
 .music-bubble{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
   width:var(--bubble-size);
   height:var(--bubble-size);
+
+  border-radius:50%;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:9999;
+  cursor:pointer;
 }
 
 .bubble-cover{
@@ -362,12 +375,14 @@
 .music-panel{
   position:fixed;
   bottom:20px;
+
+  /* ให้อยู่ติดกับ bubble พอดี */
   right:calc(20px + var(--bubble-size) + 10px);
 
   height:var(--bubble-size);
   width:var(--panel-width);
 
-  border-radius:calc(var(--bubble-size) / 2);
+  border-radius:calc(var(--bubble-size)/2);
 
   display:flex;
   align-items:center;
@@ -375,13 +390,15 @@
   padding:0 20px;
 
   backdrop-filter:blur(40px);
-  background:rgba(25,25,25,0.75);
+  background:rgba(25,25,25,0.85);
   box-shadow:0 20px 60px rgba(0,0,0,.6);
 
-  transform:translateX(40px);
+  transform:translateX(60px);
   opacity:0;
   pointer-events:none;
+
   transition:all .45s cubic-bezier(.22,1,.36,1);
+  z-index:9998;
 }
 
 .music-panel.show{
@@ -389,7 +406,6 @@
   opacity:1;
   pointer-events:auto;
 }
-
   
 .panel-header{
   display:flex;
@@ -628,6 +644,7 @@ bubble.addEventListener("touchend",(e)=>{
 
 </body>
 </html>
+
 
 
 
